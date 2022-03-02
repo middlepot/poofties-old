@@ -1,0 +1,1389 @@
+<html>
+<head>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+<title>poofties™</title>
+
+<link rel="shortcut icon" href="./img/favicon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta name="description" content="poofties™">
+<meta name="theme-color" content="#f7e9ed">
+<meta property="og:url" content="https://poofties.club">
+<meta property="og:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="og:description" content="poofties™">
+<meta property="og:image" content="https://middlepot.com/img/poofties.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://poofties.club">
+<meta property="twitter:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="twitter:description" content="poofties™">
+<meta property="twitter:image" content="https://middlepot.com/img/poofties.jpg">
+
+<script language= "JavaScript">
+location.href="https://poofties.club/account/terms"
+</script>
+
+<meta name="google-site-verification" content="XSwoCWBrpJECWQJaaNREq2GeweamSFmo78j2dJ_F3AA" />
+
+<style>
+body{ 
+  cursor: url(./img/cursor.png), progress;}
+a:hover {cursor: url(./img/cursorhover.png), progress;
+  
+  }
+ ::selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+ ::-moz-selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+</style>
+<style type="text/css">
+::-webkit-scrollbar {
+width: 4px;
+height: 4px;
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background-color: #f9f0ed;
+-webkit-border-radius: 0ex;
+border: 1px dotted #e2d5d0;
+}
+#linkbjinho { color: #bca7a7; padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinho { padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinhoo { padding-bottom: 2px; border-bottom:1px dotted #e8c1c5; }</style>
+
+<!--
+tooooooooltip
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="./js/cookies.js"></script>
+<script src="./js/util.js"></script>
+
+<script>
+(function($){
+	var methods={
+		init:function(options){
+			var defaults={ 
+				tip_follows_cursor:false, //tooltip follows cursor: boolean
+				tip_delay_time:700, //tooltip delay before displaying: milliseconds
+				tip_fade_speed:300, //tooltip fade in/out speed: milliseconds
+				attribute:"title" //tooltip text come from this attribute
+			},
+			options=$.extend(defaults,options);
+			if($("#s-m-t-tooltip").length===0){
+				$("body").append("<div id='s-m-t-tooltip'><div></div></div>");
+			}
+			var smtTooltip=$("#s-m-t-tooltip"); 
+			smtTooltip.css({"position":"absolute","display":"none"}).data("smt-z-index",smtTooltip.css("z-index")).children("div").css({"width":"100%","height":"100%"});
+			function smtGetCursorCoords(event){
+				var smtCursorCoordsX=event.pageX,
+					smtCursorCoordsY=event.pageY;
+				smtTooltip.style_my_tooltips("position",{
+					smtCursorCoordsX:smtCursorCoordsX,
+					smtCursorCoordsY:smtCursorCoordsY
+				});
+			}
+			$(".smt-current-element").live("mouseout mousedown click",function(){
+				var $this=$(this);
+				clearTimeout(smtTooltip_delay);
+				smtTooltip.style_my_tooltips("hide",{
+					speed:$this.data("smt-fade-speed")
+				});
+				$(document).unbind("mousemove");
+				$this.removeClass("smt-current-element");
+				if($this.attr(options.attribute)===""){
+					$this.attr(options.attribute,$this.data("smt-title"));
+				}
+			});
+			return this["live"]("mouseover",function(event){
+				var $this=$(this),
+					title=$this.attr(options.attribute);
+				$this.addClass("smt-current-element").data({"smt-title":title,"smt-fade-speed":options.tip_fade_speed}).attr(options.attribute,"");
+				smtTooltip.style_my_tooltips("update",{
+					title:title,
+					speed:options.tip_fade_speed,
+					delay:options.tip_delay_time,
+					tip_follows_cursor:options.tip_follows_cursor
+				});
+				$(document).bind("mousemove", function(event){
+					smtGetCursorCoords(event); 
+				});
+			});
+		},
+		update:function(options){
+			var $this=$(this);
+			$this.stop().css({"display":"none","z-index":$this.data("smt-z-index")}).children("div").text(options.title);
+			smtTooltip_delay=setTimeout(function(){
+				$this.style_my_tooltips("show",{
+					speed:options.speed,
+					tip_follows_cursor:options.tip_follows_cursor
+				})
+			}, options.delay);
+		},
+		show:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,1);
+			if(!options.tip_follows_cursor){
+				$(document).unbind("mousemove");
+			}
+		},
+		hide:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,0,function(){
+				$this.css({"z-index":"-1"});
+			});
+		},
+		position:function(options){
+			var $this=$(this),
+				winScrollX=$(window).scrollLeft(),
+				winScrollY=$(window).scrollTop(),
+				tipWidth=$this.outerWidth(true),
+				tipHeight=$this.outerHeight(true),
+				leftOffset=(options.smtCursorCoordsX+tipWidth)-winScrollX,
+				topOffset=(options.smtCursorCoordsY+tipHeight)-winScrollY;
+			if(leftOffset<=$(window).width() && leftOffset<=$(document).width()){
+				$this.css("left",options.smtCursorCoordsX);
+			}else{
+				var thePosX=options.smtCursorCoordsX-tipWidth;
+				if(thePosX>=winScrollX){
+					$this.css("left",thePosX);
+				}else{
+					$this.css("left",winScrollX);
+				}
+			}
+			if(topOffset<=$(window).height() && topOffset<=$(document).height()){
+				$this.css("top",options.smtCursorCoordsY);
+			}else{
+				var thePosY=options.smtCursorCoordsY-tipHeight;
+				if(thePosY>=winScrollY){
+					$this.css("top",thePosY);
+				}else{
+					$this.css("top",winScrollY);
+				}
+			}
+		}
+	}
+	$.fn.style_my_tooltips=function(method){
+		if(methods[method]){
+			return methods[method].apply(this,Array.prototype.slice.call(arguments,1));
+		}else if(typeof method==="object" || !method){
+			return methods.init.apply(this,arguments);
+		}else{
+			$.error("Method "+method+" does not exist");
+		}
+	};
+})(jQuery);  
+</script>
+<script>
+
+(function($){
+
+$(document).ready(function(){
+
+$("a[title]").style_my_tooltips({
+
+tip_follows_cursor:true,
+
+tip_delay_time:90,
+
+tip_fade_speed:600,
+
+attribute:"title"
+
+});
+
+});
+
+})(jQuery);
+
+</script>
+<!--tooltip!-->
+<style>
+.tooltip{
+    display: inline;
+    position: relative;
+}
+#s-m-t-tooltip {
+max-width:300px; /*how big the tooltip can be at most*/
+border-radius: 0px; /*change your border radius*/
+padding:3px 4px 5px 4px; /*padding inside tooltip*/
+margin:10px 7px -2px 10px; /*distance from word*/
+background-color:#fcf6f2; /*background color*/ 
+  border:1px dotted #CEB6B6; /*border info*/
+  font-family:tahoma; /*tooltip font*/
+font-size:7px; /*tooltip font size*/
+letter-spacing:2px; /*tooltip letter spacing*/
+color:#CEB6B6; /*tooltip font color*/
+z-index:9999;
+}
+</style>
+
+<!--
+menuuuuuuuuuuuuuuu
+-->
+<html xmlns="https://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: Verdana;
+			}
+			
+			ul {
+				list-style: none
+			}
+			
+			#context_menu {
+				background: #fcf6f2;
+				-moz-border-radius: 1px 1px;
+				border: 1px dotted #baada3;
+				letter-spacing:1px; 
+				width: 72px;
+				font-size: 8px;
+				position: absolute;
+				display: none;
+				z-index:999;
+			}
+			
+			#context_menu ul li {
+				padding: 4px 4px;
+				-moz-border-radius: 10px 10px;
+				cursor: url(https://i.imgur.com/IJhQJq5.png), progress;
+			}
+			
+			#context_menu ul li:hover {
+				background: #fcf6f2;
+				color: #baada3;
+			}
+		</style>
+		<script type="text/javascript" language="JavaScript">
+			function click(e){
+				document.getElementById("teste").innerHTML = "";
+				var menu = document.getElementById("context_menu");
+				var mouseEvent = e || event;
+				if (mouseEvent.button == 2 || mouseEvent.button == 3) {
+					mostrar(mouseEvent);
+					menu.onmouseout = function(e){
+						var mouseEvent = e || event;
+						var element = mouseEvent.relatedTarget || mouseEvent.toElement; 
+						if (element.nodeName != "LI") {
+							mouseEvent.toElement;
+						}
+					};
+				}
+				if (mouseEvent.button == 0 || mouseEvent.button == 1) {
+					esconder();
+				}
+			}
+			
+			document.onmousedown = click;
+			document.oncontextmenu = function(){
+				return false
+			};
+			function mostrar(e){
+				var menu = document.getElementById("context_menu");
+				menu.style.display = "block";
+				menu.style.top = e.pageY + 5 + "px";
+				menu.style.left = e.pageX + 5 + "px";
+			}
+			
+			function esconder(){
+				setTimeout(function(){
+					var menu = document.getElementById("context_menu");
+					menu.style.display = "none"
+				}, 100);
+			}
+			
+		</script>
+	</head>
+		<div id="teste"></div>
+		<div id="context_menu">
+			<ul>
+				<li><font color="#baada3"> ‌ take care ♡</font></li>
+			</ul>
+		</div>
+<!--
+menuuuuuuuuuuuuuuu
+-->
+
+</head>
+
+<body ondragstart="return false" style="background-image:url(./img/bg.jpg); background-repeat: no-repeat; background-size: cover; background-color:#fefbfb; font-family: Verdana; font-size: 10px;">
+<style>
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+#base {
+position: absolute;
+	left: 350px;
+	top: 90px;
+overflow-y:hidden;
+overflow-x:hidden;
+ }
+#stuff {
+position: absolute;
+	left: 15px;
+	top: 54px;
+width: 594px;
+height: 415px;
+overflow-x:hidden;
+z-index: 6;
+ }
+#aaa {
+position: absolute;
+	left: 273px;
+	top: 522px;
+width: 100px;
+height: 100px;
+overflow-x:hidden;
+z-index: 3;
+ }
+@media screen and (max-width: 1000px) and (orientation: portrait){
+#everything { position: absolute; zoom: 145%;
+	left:590px;
+	top:-150px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg); }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 1700px) and (orientation: landscape){
+#everything { position: absolute; zoom: 120%;
+	left:90px;
+	top:35px; }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 2000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 100%; left:-80px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 3000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 240%;
+	left:90px;
+	top:35px; }
+}
+@media screen and (max-width: 1000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 80%; left:-50px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+</style>
+
+<div id="everything">
+
+<a href="/"><img style="position: absolute; left: 515px; top: 5px; z-index: 2;"
+src="./img/logo.png"></a><br><br>
+
+
+
+<a href="/account"><img style="position: absolute; left: 225px; top: 105px; z-index: 2;"
+src="./img/account.png" onMouseOver="this.src='./img/accounthover.png'"
+onMouseOut="this.src='./img/account.png'"></a><br><br>
+
+<a href="https://shybunny.store" target="_blank">
+<img style="position: absolute; left: 225px; top: 220px; z-index: 2;"
+src="./img/store.png" onMouseOver="this.src='./img/storehover.png'"
+onMouseOut="this.src='./img/store.png'"></a><br><br>
+
+<a href="/notes"><img style="position: absolute; left: 222px; top: 375px; z-index: 2;"
+src="./img/notes.png" onMouseOver="this.src='./img/noteshover.png'"
+onMouseOut="this.src='./img/notes.png'"></a><br><br>
+
+<a href="/thoughts"><img style="position: absolute; left: 220px; top: 505px; z-index: 2;"
+src="./img/thoughts.png" onMouseOver="this.src='./img/thoughtshover.png'"
+onMouseOut="this.src='./img/thoughts.png'"></a><br><br>
+
+
+<a href="/games"><img style="position: absolute; left: 995px; top: 90px; z-index: 2;"
+src="./img/games.png" onMouseOver="this.src='./img/gameshover.png'"
+onMouseOut="this.src='./img/games.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1010px; top: 248px; z-index: 2;"
+src="./img/cafe.png" onMouseOver="this.src='./img/cafehover.png'"
+onMouseOut="this.src='./img/cafe.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1020px; top: 375px; z-index: 2;"
+src="./img/bot.png" onMouseOver="this.src='./img/bothover.png'"
+onMouseOut="this.src='./img/bot.png'"></a><br><br>
+
+<a href="/series">
+<img style="position: absolute; left: 1010px; top: 490px; z-index: 2;"
+src="./img/series.png" onMouseOver="this.src='./img/serieshover.png'"
+onMouseOut="this.src='./img/series.png'"></a><br><br>
+
+
+
+<div id="base">
+
+<div id="aaa">
+<a id="linkzinho" href="https://middlepot.com" target="_blank" style="text-decoration: none;"><font color="#b09097">middlepot.com</font></a>
+</div>
+
+<img src="./img/base.png"/>
+
+<div id="stuff">
+<br>
+<div style="position:relative; float:right; right:20px; top:-10px;">
+<a><img src="./img/langbutton1.png" id="en" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton2.png" id="pt" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton3.png" id="jp" onclick="changeTranslation(this);"/></a>
+</div>
+
+<div style="position:absolute; left:5%; right:5%; top: 30px; line-height: 15px;">
+<br>
+
+<style>
+.box { padding: 10px; font-weight:normal; border-style: solid; border-width: 10px; border-color: rgba(255, 255, 255, 0.01); border-image: url(https://i.imgur.com/sYxacdk.png) 20 round; }
+a { color: #b09097; }
+h1 { font-size:14px; }
+h2 { font-size:12px; }
+h3 { font-size:10px; }
+</style>
+<center>
+<img id="img_privacy_en" src="./img/privacy_en.png"/>
+<img id="img_privacy_pt" style="display: none;" src="./img/privacy_pt.png"/>
+<img id="img_privacy_jp" style="display: none;" src="./img/privacy_jp.png"/>
+<br><br>
+<div class="box" id="text_privacy_en" style="display: block; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p>Last updated: September 20, 2021</p>
+<p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+<p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+<h1>Interpretation and Definitions</h1>
+<h2>Interpretation</h2>
+<p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h2>Definitions</h2>
+<p>For the purposes of this Privacy Policy:</p>
+<ul>
+<li>
+<p><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</p>
+</li>
+<li>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to the poofties franchise.</p>
+</li>
+<li>
+<p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</p>
+</li>
+<li>
+<p><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</p>
+</li>
+<li>
+<p><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
+</li>
+<li>
+<p><strong>Service</strong> refers to the poofties franchise Products.</p>
+</li>
+<li>
+<p><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</p>
+</li>
+<li>
+<p><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
+</li>
+<li>
+<p><strong>Products</strong> refers to the poofties franchise Products.</p>
+</li>
+<li>
+<p><strong>Website</strong> refers to the poofties franchise Website, accessible from <a href="https://poofties.club" rel="external nofollow noopener" target="_blank">https://poofties.club</a></p>
+</li>
+<li>
+<p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+</li>
+</ul>
+<h1>Collecting and Using Your Personal Data</h1>
+<h2>Types of Data Collected</h2>
+<h3>Personal Data</h3>
+<p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+<ul>
+<li>
+<p>Email address</p>
+</li>
+<li>
+<p>Usage Data</p>
+</li>
+</ul>
+<h3>Email address</h3>
+<p>Your Email address will only be used for contacting about your Account settings. We will use Your Email address for providing essential information and sending transactional emails. We will never use Your Email for sending marketing or promotional emails.</p>
+<h3>Usage Data</h3>
+<p>Usage Data is collected automatically when using the Service.</p>
+<p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
+<h3>Tracking Technologies and Cookies</h3>
+<p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>
+<ul>
+<li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</li>
+<li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related Products and/or Website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>
+</ul>
+<p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.</p>
+<p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+<ul>
+<li>
+<p><strong>Necessary / Essential Cookies</strong></p>
+<p>Type: Session Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies are essential to enable You to use some of the Products and/or Website's features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+</li>
+<li>
+<p><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies identify if users have accepted the use of cookies on the Products and/or Website.</p>
+</li>
+<li>
+<p><strong>Functionality Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies allow us to remember choices You make when You use the Products and/or Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Products and/or Website.</p>
+</li>
+</ul>
+<p>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy.</p>
+<h2>Use of Your Personal Data</h2>
+<p>The Company may use Personal Data for the following purposes:</p>
+<ul>
+<li>
+<p><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</p>
+</li>
+<li>
+<p><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
+</li>
+<li>
+<p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</p>
+</li>
+<li>
+<p><strong>To contact You:</strong> To contact You by email, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</p>
+</li>
+<li>
+<p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
+</li>
+<li>
+<p><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</p>
+</li>
+<li>
+<p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, and your experience.</p>
+</li>
+</ul>
+<p>The Company will <strong>not</strong> use Personal Data for the following purposes:</p>
+<ul>
+<li>
+<p><strong>Provide You</strong> with news, special offers and general information about other goods, services and events which we offer unless You have explicitly opted to receive such information.</p>
+</li>
+</ul>
+<p>We may share Your personal information in the following situations:</p>
+<ul>
+<li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service,  to contact You.</li>
+<li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
+<li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+<li><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+<li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
+<li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
+</ul>
+<h2>Retention of Your Personal Data</h2>
+<p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+<p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
+<h2>Transfer of Your Personal Data</h2>
+<p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
+<p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
+<p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
+<h2>Disclosure of Your Personal Data</h2>
+<h3>Business Transactions</h3>
+<p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+<h3>Law enforcement</h3>
+<p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+<h3>Other legal requirements</h3>
+<p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+<ul>
+<li>Comply with a legal obligation</li>
+<li>Protect and defend the rights or property of the Company</li>
+<li>Prevent or investigate possible wrongdoing in connection with the Service</li>
+<li>Protect the personal safety of Users of the Service or the public</li>
+<li>Protect against legal liability</li>
+</ul>
+<h2>Security of Your Personal Data</h2>
+<p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+<h1>Children's Privacy</h1>
+<p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
+<p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
+<h1>Links to Other Websites</h1>
+<p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+<h1>Changes to this Privacy Policy</h1>
+<p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+<h1>Translation Interpretation</h1>
+<p>This Privacy Policy may have been translated if we have made them available to You on our Service.
+You agree that the original English text shall prevail in the case of a dispute.</p>
+<h1>Contact Us</h1>
+<p>If you have any questions about this Privacy Policy, You can contact us:</p>
+<ul>
+<li>
+<p>By email: poofties@middlepot.com</p>
+</li>
+<li>
+<p>By visiting this page on our Website: <a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a></p>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="box" id="text_privacy_pt" style="display: none; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p> Última atualização: 20 de setembro de 2021 </p>
+<p> Esta Política de Privacidade descreve nossas políticas e procedimentos sobre a coleta, uso e divulgação de Suas informações quando Você usa o Serviço e informa sobre Seus direitos de privacidade e como a lei o protege. </p>
+<p> Usamos seus dados pessoais para fornecer e melhorar o serviço. Ao usar o Serviço, você concorda com a coleta e uso de informações de acordo com esta Política de Privacidade. </p>
+<h1> Interpretação e definições </h1>
+<h2> Interpretação </h2>
+<p> As palavras cuja letra inicial é maiúscula têm significados definidos nas seguintes condições. As seguintes definições devem ter o mesmo significado, independentemente de aparecerem no singular ou no plural. </p>
+<h2> Definições </h2>
+<p> Para os fins desta Política de Privacidade: </p>
+<ul>
+<li>
+<p> <strong> Conta </strong> significa uma conta única criada para Você acessar nosso Serviço ou partes de nosso Serviço. </p>
+</li>
+<li>
+<p> <strong> Empresa </strong> (referida como &quot; a Empresa &quot;, &quot; Nós &quot;, &quot; Nós &quot; ou &quot; Nossos &quot; neste Contrato) refere-se a franquia poofties. </p>
+</li>
+<li>
+<p> <strong> Cookies </strong> são pequenos arquivos que são colocados em seu computador, dispositivo móvel ou qualquer outro dispositivo por um site, contendo os detalhes de Seu histórico de navegação nesse site entre seus vários usos. </p>
+</li>
+<li>
+<p> <strong> Dispositivo </strong> significa qualquer dispositivo que pode acessar o Serviço, como um computador, um telefone celular ou um tablet digital. </p>
+</li>
+<li>
+<p> <strong> Dados pessoais </strong> são quaisquer informações relacionadas a um indivíduo identificado ou identificável. </p>
+</li>
+<li>
+<p> <strong> Serviço </strong> refere-se a produtos da franquia poofties. </p>
+</li>
+<li>
+<p> <strong> Provedor de serviços </strong> significa qualquer pessoa física ou jurídica que processa os dados em nome da Empresa. Refere-se a empresas terceirizadas ou indivíduos contratados pela Empresa para facilitar o Serviço, para fornecer o Serviço em nome da Empresa, para realizar serviços relacionados ao Serviço ou para auxiliar a Empresa na análise de como o Serviço é usado. </p>
+</li>
+<li>
+<p> <strong> Dados de uso </strong> refere-se aos dados coletados automaticamente, sejam gerados pelo uso do Serviço ou da própria infraestrutura do Serviço (por exemplo, a duração de uma visita à página). </p>
+</li>
+<li>
+<p> <strong> Produtos </strong> refere-se a Produtos da franquia poofties. </p>
+</li>
+<li>
+<p> <strong> Website </strong> refere-se ao Website da franquia poofties, acessível em <a href="https://poofties.club" rel="external nofollow noopener" target="_blank"> https://poofties.club </a> </p>
+</li>
+<li>
+<p> <strong> Você </strong> significa o indivíduo que acessa ou usa o Serviço, ou a empresa ou outra pessoa jurídica em nome da qual esse indivíduo está acessando ou usando o Serviço, conforme aplicável. </p>
+</li>
+</ul>
+<h1> Coletando e usando seus dados pessoais </h1>
+<h2> Tipos de dados coletados </h2>
+<h3> Dados pessoais </h3>
+<p> Ao usar nosso serviço, podemos solicitar que você nos forneça certas informações de identificação pessoal que podem ser usadas para contatá-lo ou identificá-lo. As informações de identificação pessoal podem incluir, mas não se limitam a: </p>
+<ul>
+<li>
+<p> Endereço de e-mail </p>
+</li>
+<li>
+<p> Dados de uso </p>
+</li>
+</ul>
+<h3> Endereço de e-mail </h3>
+<p> O seu endereço de e-mail será usado apenas para contato sobre as configurações da sua conta. Usaremos Seu endereço de e-mail para fornecer informações essenciais e enviar e-mails transacionais. Nunca usaremos seu e-mail para enviar e-mails de marketing ou promocionais. </p>
+<h3> Dados de uso </h3>
+<p> Os dados de uso são coletados automaticamente ao usar o serviço. </p>
+<p> Os dados de uso podem incluir informações como o endereço de protocolo da Internet do seu dispositivo (por exemplo, endereço IP), tipo de navegador, versão do navegador, as páginas do nosso serviço que você visita, a hora e data da sua visita, o tempo gasto nessas páginas , identificadores exclusivos de dispositivos e outros dados de diagnóstico. </p>
+<p> Quando você acessa o Serviço por ou através de um aparelho celular, podemos coletar certas informações automaticamente, incluindo, mas não se limitando a, o tipo de aparelho celular que você usa, a ID exclusiva do seu aparelho celular, o endereço IP do seu aparelho celular , Seu sistema operacional móvel, o tipo de navegador de Internet móvel que você usa, identificadores exclusivos de dispositivo e outros dados de diagnóstico. </p>
+<p> Também podemos coletar informações que o seu navegador envia sempre que você visita nosso serviço ou quando você acessa o serviço por meio de um dispositivo móvel. </p> 
+<h3> Tecnologias e cookies de rastreamento </h3>
+<p> Usamos cookies e tecnologias de rastreamento semelhantes para rastrear a atividade em nosso serviço e armazenar certas informações. As tecnologias de rastreamento usadas são beacons, tags e scripts para coletar e rastrear informações e para melhorar e analisar Nosso Serviço. As tecnologias que usamos podem incluir: </p>
+<ul>
+<li> <strong> Cookies ou Cookies do navegador. </strong> Um cookie é um pequeno arquivo colocado em seu dispositivo. Você pode instruir seu navegador a recusar todos os cookies ou indicar quando um cookie está sendo enviado. No entanto, se você não aceitar cookies, pode não ser capaz de usar algumas partes do nosso serviço. A menos que você tenha ajustado a configuração do seu navegador para que ele recuse Cookies, nosso Serviço pode usar Cookies. </li>
+<li> <strong> Web Beacons. </strong> Certas seções de nosso Serviço e nossos e-mails podem conter pequenos arquivos eletrônicos conhecidos como web beacons (também chamados de clear gifs, pixel tags e single-pixel gifs) que permitem o Empresa, por exemplo, para contar os usuários que visitaram essas páginas ou abriram um e-mail e para outras estatísticas de produtos e / ou sites relacionados (por exemplo, registrar a popularidade de uma determinada seção e verificar a integridade do sistema e do servidor). </li>
+</ul>
+<p> Os cookies podem ser &quot; Persistentes &quot; ou &quot; Sessão &quot; Cookies. Os cookies persistentes permanecem em seu computador pessoal ou dispositivo móvel quando você fica offline, enquanto os cookies de sessão são excluídos assim que você fecha o navegador da web. </p>
+<p> Usamos cookies de sessão e cookies persistentes para as finalidades definidas abaixo: </p>
+<ul>
+<li>
+<p> <strong> Cookies necessários / essenciais </strong> </p>
+<p> Tipo: Cookies de sessão </p>
+<p> Administrado por: Nós </p>
+<p> Objetivo: esses cookies são essenciais para permitir que você use alguns dos recursos do Produto e / ou do site. Eles ajudam a autenticar usuários e prevenir o uso fraudulento de contas de usuários. Sem esses cookies, os serviços que você solicitou não podem ser fornecidos e nós apenas usamos esses cookies para fornecer esses serviços a você. </p>
+</li>
+<li>
+<p> <strong> Política de cookies / Cookies de aceitação de aviso </strong> </p>
+<p> Tipo: Cookies persistentes </p>
+<p> Administrado por: Nós </p>
+<p> Objetivo: esses cookies identificam se os usuários aceitaram o uso de cookies no Produto e / ou site. </p>
+</li>
+<li>
+<p> <strong> Cookies de funcionalidade </strong> </p>
+<p> Tipo: Cookies persistentes </p>
+<p> Administrado por: Nós </p>
+<p> Objetivo: esses cookies nos permitem lembrar as escolhas que você faz quando usa o Produto e / ou site, como lembrar seus detalhes de login ou preferência de idioma. O objetivo desses cookies é fornecer a você uma experiência mais pessoal e evitar que você tenha que inserir novamente suas preferências toda vez que usar o Produto e / ou site. </p>
+</li>
+</ul>
+<p> Para obter mais informações sobre os cookies que usamos e suas opções em relação aos cookies, visite nossa Política de Cookies ou a seção Cookies de nossa Política de Privacidade. </p>
+<h2> Uso de seus dados pessoais </h2>
+<p> A Empresa pode usar Dados Pessoais para os seguintes fins: </p>
+<ul>
+<li>
+<p> <strong> Para fornecer e manter nosso serviço </strong>, incluindo monitorar o uso de nosso serviço. </p>
+</li>
+<li>
+<p> <strong> Para gerenciar sua conta: </strong> para gerenciar Seu registro como um usuário do Serviço. Os Dados Pessoais que você fornece podem dar-lhe acesso a diferentes funcionalidades do Serviço que estão disponíveis para Você como um usuário registrado. </p>
+</li>
+<li>
+<p> <strong> Para a execução de um contrato: </strong> o desenvolvimento, conformidade e realização do contrato de compra dos produtos, itens ou serviços que Você adquiriu ou de qualquer outro contrato conosco por meio do Serviço. </p>
+</li>
+<li>
+<p> <strong> Para entrar em contato com você: </strong> para entrar em contato com você por e-mail, SMS ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativo para celular sobre atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou contratos contratados serviços, incluindo as atualizações de segurança, quando necessário ou razoável para sua implementação. </p>
+</li>
+<li>
+<p> <strong> Para gerenciar suas solicitações: </strong> Para atender e gerenciar suas solicitações para nós. </p>
+</li>
+<li>
+<p> <strong> Para transferências de empresas: </strong> podemos usar suas informações para avaliar ou conduzir uma fusão, alienação, reestruturação, reorganização, dissolução ou outra venda ou transferência de parte ou de todos os Nossos ativos, seja como um continuidade ou como parte de falência, liquidação ou processo semelhante, em que os dados pessoais mantidos por nós sobre os usuários do serviço estão entre os ativos transferidos. </p>
+</li>
+<li>
+<p> <strong> Para outras finalidades </strong>: podemos usar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais e para avaliar e melhorar nosso serviço e sua experiência . </p>
+</li>
+</ul>
+<p> A Empresa <strong> não </strong> usará Dados Pessoais para os seguintes fins: </p> 
+<ul>
+<li>
+<p> <strong> Fornecer a Você </strong> notícias, ofertas especiais e informações gerais sobre outros bens, serviços e eventos que oferecemos, a menos que Você tenha optado explicitamente por receber tais informações. </p>
+</li>
+</ul>
+<p> Podemos compartilhar suas informações pessoais nas seguintes situações: </p>
+<ul>
+<li> <strong> Com provedores de serviços: </strong> podemos compartilhar suas informações pessoais com provedores de serviços para monitorar e analisar o uso de nosso serviço, para entrar em contato com você. </li>
+<li> <strong> Para transferências de empresas: </strong> podemos compartilhar ou transferir suas informações pessoais em conexão com, ou durante as negociações de, qualquer fusão, venda de ativos da empresa, financiamento ou aquisição de todo ou parte de nossa negócio para outra empresa. </li>
+<li> <strong> Com afiliados: </strong> podemos compartilhar suas informações com nossos afiliados; nesse caso, exigiremos que esses afiliados honrem esta Política de privacidade. Afiliadas incluem Nossa empresa-mãe e quaisquer outras subsidiárias, parceiros de joint venture ou outras empresas que controlamos ou que estão sob controle comum conosco. </li>
+<li> <strong> Com parceiros de negócios: </strong> podemos compartilhar suas informações com nossos parceiros de negócios para oferecer a você determinados produtos, serviços ou promoções. </li>
+<li> <strong> Com outros usuários: </strong> quando você compartilha informações pessoais ou de outra forma interage em áreas públicas com outros usuários, tais informações podem ser visualizadas por todos os usuários e podem ser distribuídas publicamente fora. </li>
+<li> <strong> Com o seu consentimento </strong>: podemos divulgar as suas informações pessoais para qualquer outra finalidade com o seu consentimento. </li>
+</ul>
+<h2> Retenção de seus dados pessoais </h2>
+<p> A Empresa reterá Seus Dados Pessoais apenas pelo tempo necessário para os fins definidos nesta Política de Privacidade. Reteremos e usaremos Seus Dados Pessoais na medida necessária para cumprir nossas obrigações legais (por exemplo, se formos obrigados a reter seus dados para cumprir as leis aplicáveis), resolveremos disputas e faremos cumprir nossos acordos e políticas legais. </p>
+<p> A empresa também reterá os Dados de Uso para fins de análise interna. Os dados de uso são geralmente retidos por um período de tempo mais curto, exceto quando esses dados são usados ​​para fortalecer a segurança ou para melhorar a funcionalidade do nosso serviço, ou se formos legalmente obrigados a reter esses dados por períodos mais longos. </p>
+<h2> Transferência de seus dados pessoais </h2>
+<p> Suas informações, incluindo Dados Pessoais, são processadas nos escritórios operacionais da Empresa e em quaisquer outros locais onde as partes envolvidas no processamento estejam localizadas. Isso significa que essas informações podem ser transferidas para - e mantidas em - computadores localizados fora de seu estado, província, país ou outra jurisdição governamental onde as leis de proteção de dados podem ser diferentes daquelas de sua jurisdição. </p>
+<p> Seu consentimento com esta Política de Privacidade, seguido do envio de tais informações, representa sua concordância com essa transferência. </p>
+<p> A Empresa tomará todas as medidas razoavelmente necessárias para garantir que Seus dados sejam tratados com segurança e de acordo com esta Política de Privacidade e nenhuma transferência de Seus Dados Pessoais será realizada para uma organização ou um país, a menos que haja controles adequados em vigor, incluindo a segurança de seus dados e outras informações pessoais. </p>
+<h2> Divulgação de seus dados pessoais </h2>
+<h3> Transações comerciais </h3>
+<p> Se a Empresa estiver envolvida em uma fusão, aquisição ou venda de ativos, Seus Dados Pessoais podem ser transferidos. Avisaremos antes que Seus Dados Pessoais sejam transferidos e se tornem sujeitos a uma Política de Privacidade diferente. </p>
+<h3> Aplicação da lei </h3>
+<p> Sob certas circunstâncias, a Empresa pode ser obrigada a divulgar Seus Dados Pessoais se for obrigada a fazê-lo por lei ou em resposta a solicitações válidas de autoridades públicas (por exemplo, um tribunal ou agência governamental). </p>
+<h3> Outros requisitos legais </h3>
+<p> A Empresa pode divulgar Seus Dados Pessoais acreditando de boa fé que tal ação é necessária para: </p>
+<ul>
+<li> Cumprir uma obrigação legal </li>
+<li> Proteja e defenda os direitos ou propriedade da Empresa </li>
+<li> Prevenir ou investigar possíveis atos ilícitos em conexão com o Serviço </li>
+<li> Proteja a segurança pessoal dos usuários do serviço ou do público </li>
+<li> Proteja-se contra responsabilidade legal </li>
+</ul>
+<h2> Segurança de seus dados pessoais </h2>
+<p> A segurança dos seus dados pessoais é importante para nós, mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro. Embora nos esforcemos para usar meios comercialmente aceitáveis ​​para proteger seus dados pessoais, não podemos garantir sua segurança absoluta. </p>
+<h1> Privacidade infantil </h1> 
+<p> Nosso serviço não se destina a menores de 13 anos. Não coletamos intencionalmente informações de identificação pessoal de menores de 13 anos. Se você for um dos pais ou responsável e estiver ciente de que seu filho nos forneceu dados pessoais Dados, entre em contato conosco. Se tomarmos conhecimento de que coletamos dados pessoais de qualquer pessoa menor de 13 anos sem verificação do consentimento dos pais, tomaremos medidas para remover essas informações de nossos servidores. </p>
+<p> Se precisarmos confiar no consentimento como base legal para o processamento de suas informações e seu país exigir o consentimento de um dos pais, podemos exigir o consentimento dos seus pais antes de coletar e usar essas informações. </p>
+<h1> Links para outros sites </h1>
+<p> Nosso serviço pode conter links para outros sites que não são operados por nós. Se você clicar em um link de terceiros, será direcionado para o site desse terceiro. Aconselhamos vivamente que reveja a Política de Privacidade de cada site que visitar. </p>
+<p> Não temos controle e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros. </p>
+<h1> Mudanças nesta Política de Privacidade </h1>
+<p> Podemos atualizar nossa Política de Privacidade de tempos em tempos. Iremos notificá-lo de quaisquer alterações, publicando a nova Política de Privacidade nesta página. </p>
+<p> Recomendamos que você reveja esta Política de Privacidade periodicamente para verificar quaisquer alterações. As alterações a esta Política de Privacidade entram em vigor quando publicadas nesta página. </p>
+<h1> Tradução Interpretação </h1>
+<p> Esta Política de Privacidade pode ter sido traduzida se a tivermos disponibilizado para você em nosso serviço.
+Você concorda que o texto original em inglês prevalecerá em caso de disputa. </p>
+<h1> Entre em contato conosco </h1>
+<p> Se você tiver alguma dúvida sobre esta Política de Privacidade, pode entrar em contato conosco: </p>
+<ul>
+<li>
+<p> Por e-mail: poofties@middlepot.com </p>
+</li>
+<li>
+<p> Visitando esta página em nosso Website: <a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a> </p> 
+</li>
+</ul>
+<br>
+</div>
+</div>
+
+<div class="box" id="text_privacy_jp" style="display: none; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p>最終更新日：2021年9月20日</p>
+<p>このプライバシーポリシーは、お客様がサービスを使用する際のお客様の情報の収集、使用、開示に関する当社のポリシーと手順を説明し、お客様のプライバシー権と法律がお客様を保護する方法について説明します。</p>
+<p>当社は、サービスを提供および改善するためにお客様の個人データを使用します。本サービスを利用することにより、お客様はこのプライバシーポリシーに従って情報を収集および使用することに同意するものとします。</p>
+<h1>解釈と定義</h1>
+<h2>解釈</h2>
+<p>頭文字が大文字になっている単語は、以下の条件で定義された意味を持ちます。以下の定義は、単数形であるか複数形であるかに関係なく、同じ意味を持つものとします。</p>
+<h2>定義</h2>
+<p>このプライバシーポリシーの目的のために：</p>
+<ul>
+<li>
+<p> <strong>アカウント</strong>とは、お客様が当社のサービスまたはサービスの一部にアクセスするために作成された一意のアカウントを意味します。</p>
+</li>
+<li>
+<p> <strong>会社</strong>（本契約では「会社」、「私たち」、「私たち」、「私たち」のいずれかと呼ばれます）は、pooftiesフランチャイズを指します。</p>
+</li>
+<li>
+<p> <strong>クッキー</strong>は、ウェブサイトによってコンピュータ、モバイルデバイス、またはその他のデバイスに配置される小さなファイルであり、そのウェブサイトでの閲覧履歴の詳細が含まれています。</p>
+</li>
+<li>
+<p> <strong>デバイス</strong>とは、コンピューター、携帯電話、デジタルタブレットなど、サービスにアクセスできるすべてのデバイスを意味します。</p>
+</li>
+<li>
+<p> <strong>個人データ</strong>は、特定された、または特定可能な個人に関連する情報です。</p>
+</li>
+<li>
+<p> <strong>サービス</strong>とは、pooftiesフランチャイズやウェブサイトを製品します。</p>
+</li>
+<li>
+<p> <strong>サービスプロバイダー</strong>とは、会社に代わってデータを処理する自然人または法人を意味します。これは、サービスを促進するため、会社に代わってサービスを提供するため、サービスに関連するサービスを実行するため、またはサービスの使用方法を分析する際に会社を支援するために会社が雇用する第三者の会社または個人を指します。</p>
+</li>
+<li>
+<p> <strong>使用状況データ</strong>とは、サービスの使用によって、またはサービスインフラストラクチャ自体から生成された、自動的に収集されたデータを指します（たとえば、ページへのアクセス時間）。</p>
+</li>
+<li>
+<p> <strong>製品</strong>はpooftiesフランチャイズを製品。</p>
+</li>
+<li>
+<p> <strong>ウェブサイト</strong>は、pooftiesフランチャイズウェブサイトを指し、<a href="https://poofties.club" rel="external nofollow noopener" target="_blank">https：//poofties.club</a> からアクセスできます。</p>
+</li>
+<li>
+<p> <strong>あなた</strong>とは、本サービスにアクセスまたは使用する個人、会社、またはそのような個人が本サービスにアクセスまたは使用しているその他の法人を意味します。</p>
+</li>
+</ul>
+<h1>個人データの収集と使用</h1>
+<h2>収集されるデータの種類</h2>
+<h3>個人データ</h3>
+<p>当社のサービスを使用している間、お客様に連絡または特定するために使用できる特定の個人情報を提供するようにお願いする場合があります。個人を特定できる情報には、以下が含まれますが、これらに限定されません。</p>
+<ul>
+<li>
+<p>メールアドレス</p>
+</li>
+<li>
+<p>使用状況データ</p>
+</li>
+</ul> 
+<h3>メールアドレス</h3>
+<p>あなたのメールアドレスは、あなたのアカウント設定について連絡するためにのみ使用されます。重要な情報の提供とトランザクションメールの送信には、お客様のメールアドレスを使用します。マーケティングやプロモーションのメールを送信するためにあなたのメールを使用することは決してありません。</p>
+<h3>使用状況データ</h3>
+<p>使用状況データは、サービスの使用時に自動的に収集されます。</p>
+<p>使用状況データには、デバイスのインターネットプロトコルアドレス（IPアドレスなど）、ブラウザの種類、ブラウザのバージョン、アクセスしたサービスのページ、アクセスした日時、それらのページで費やした時間などの情報が含まれる場合があります、一意のデバイス識別子およびその他の診断データ。</p>
+<p>モバイルデバイスを介して、またはモバイルデバイスを介してサービスにアクセスすると、使用するモバイルデバイスの種類、モバイルデバイスの一意のID、モバイルデバイスのIPアドレスなど、特定の情報が自動的に収集される場合があります。 、モバイルオペレーティングシステム、使用するモバイルインターネットブラウザの種類、一意のデバイスID、その他の診断データ。</p>
+<p>また、お客様が当社のサービスにアクセスしたとき、またはお客様がモバイルデバイスを介してまたはモバイルデバイスを介してサービスにアクセスしたときに、お客様のブラウザが送信する情報を収集する場合があります。</p>
+<h3>追跡技術とCookie </h3>
+<p>当社は、Cookieおよび同様の追跡技術を使用して、当社のサービスでの活動を追跡し、特定の情報を保存します。使用される追跡技術は、情報を収集および追跡し、当社のサービスを改善および分析するためのビーコン、タグ、およびスクリプトです。私たちが使用するテクノロジーには、次のものが含まれます。</p>
+<ul>
+<li> <strong> CookieまたはブラウザCookie。</strong> Cookieは、デバイスに配置される小さなファイルです。すべてのCookieを拒否するか、Cookieがいつ送信されるかを示すようにブラウザに指示することができます。ただし、Cookieを受け入れない場合、サービスの一部を使用できない場合があります。クッキーを拒否するようにブラウザの設定を調整していない限り、当社のサービスはクッキーを使用する場合があります。</li>
+<li> <strong> Webビーコン。</strong>当社のサービスおよび電子メールの特定のセクションには、Webビーコン（クリアGIF、ピクセルタグ、およびシングルピクセルGIFとも呼ばれる）と呼ばれる小さな電子ファイルが含まれている場合があります。たとえば、これらのページにアクセスしたり、メールを開いたりしたユーザーをカウントしたり、その他の関連する製品やウェブサイトの統計情報を取得したりします（たとえば、特定のセクションの人気を記録し、システムとサーバーの整合性を検証します）。</li>
+</ul>
+<p> Cookieは「永続的」にすることができます。または「セッション」クッキー。永続的なCookieは、オフラインになってもパーソナルコンピュータまたはモバイルデバイスに残りますが、セッションCookieは、Webブラウザを閉じるとすぐに削除されます。</p>
+<p>以下に示す目的で、セッションCookieと永続Cookieの両方を使用します。</p>
+<ul>
+<li>
+<p> <strong>必要な/必須のCookie </strong> </p>
+<p>タイプ：セッションCookie </p>
+<p>管理者：私たち</p>
+<p>目的：これらのCookieは、製品やWebサイトの機能の一部を使用できるようにするために不可欠です。これらは、ユーザーを認証し、ユーザーアカウントの不正使用を防ぐのに役立ちます。これらのCookieがないと、お客様が要求したサービスを提供できず、当社はこれらのCookieを使用してお客様にこれらのサービスを提供するだけです。</p>
+</li>
+<li>
+<p> <strong> Cookieポリシー/通知受け入れCookie </strong> </p>
+<p>タイプ：永続的なCookie </p>
+<p>管理者：私たち</p>
+<p>目的：これらのCookieは、ユーザーが製品やWebサイトでのCookieの使用を受け入れたかどうかを識別します。</p>
+</li>
+<li>
+<p> <strong>機能Cookie </strong> </p>
+<p>タイプ：永続的なCookie </p>
+<p>管理者：私たち</p>
+<p>目的：これらのCookieを使用すると、ログインの詳細や言語設定の記憶など、製品やWebサイトの使用時に行った選択を記憶できます。これらのCookieの目的は、より個人的なエクスペリエンスを提供し、製品やWebサイトを使用するたびに設定を再入力する必要がないようにすることです。</p>
+</li>
+</ul>
+<p>当社が使用するCookieとCookieに関する選択の詳細については、CookieポリシーまたはプライバシーポリシーのCookieセクションをご覧ください。</p>
+<h2>個人データの使用</h2>
+<p>当社は、以下の目的で個人データを使用する場合があります。</p>
+<ul>
+<li>
+<p> <strong>当社のサービスの使用状況を監視することを含め、当社のサービスを提供および維持するため</strong>。</p>
+</li>
+<li>
+<p> <strong>アカウントを管理するには：</strong>サービスのユーザーとしての登録を管理します。あなたが提供する個人データは、登録ユーザーとしてあなたが利用できるサービスのさまざまな機能へのアクセスをあなたに与えることができます。</p>
+</li>
+<li>
+<p> <strong>契約の履行について：</strong>お客様が購入した製品、アイテム、サービス、または本サービスを通じて当社と締結したその他の契約の開発、コンプライアンス、および購入契約の履行。</strong> p>
+</li>
+<li> 
+<p> <strong>お客様に連絡するには：</strong>電子メール、SMS、またはその他の同等の形式の電子通信（機能、製品、または契約に関連する更新または有益な通信に関するモバイルアプリケーションのプッシュ通知など）でお客様に連絡する場合実装に必要または合理的な場合のセキュリティ更新を含むサービス。</p>
+</li>
+<li>
+<p> <strong>お客様のリクエストを管理するには：</strong>当社へのリクエストに参加して管理するため。</p>
+</li>
+<li>
+<p> <strong>事業譲渡の場合：</strong>当社は、お客様の情報を使用して、当社の資産の一部またはすべての合併、売却、リストラ、再編成、解散、またはその他の売却または譲渡を評価または実施する場合があります。継続企業の前提、または破産、清算、または同様の手続きの一環として、当社のサービスユーザーに関して当社が保有する個人データが譲渡された資産に含まれる場合。</p>
+</li>
+<li>
+<p> <strong>その他の目的</strong>：データ分析、使用傾向の特定、プロモーションキャンペーンの有効性の判断、サービスの評価と改善、およびお客様のエクスペリエンスなど、その他の目的でお客様の情報を使用する場合があります。</p>
+</li>
+</ul>
+<p>当社は、以下の目的で個人データを<strong>使用しません</strong>。</p>
+<ul>
+<li>
+<p> <strong>お客様に</strong>ニュース、特別オファー、およびその他の商品、サービス、イベントに関する一般情報を提供します。ただし、お客様がそのような情報を受け取ることを明示的に選択した場合を除きます。</p>
+</li>
+</ul>
+<p>次の状況では、お客様の個人情報を共有する場合があります。</p>
+<ul>
+<li> <strong>サービスプロバイダーと：</strong>サービスプロバイダーとお客様の個人情報を共有して、サービスの使用を監視および分析し、お客様に連絡する場合があります。</li>
+<li> <strong>事業譲渡の場合：</strong>当社は、合併、会社資産の売却、資金調達、または当社の全部または一部の買収に関連して、またはその交渉中に、お客様の個人情報を共有または譲渡する場合があります。別の会社へのビジネス。</li>
+<li> <strong>アフィリエイトと：</strong>アフィリエイトとお客様の情報を共有する場合があります。その場合、これらのアフィリエイトはこのプライバシーポリシーを遵守する必要があります。アフィリエイトには、当社の親会社およびその他の子会社、合弁事業パートナー、または当社が管理する、または当社と共通の管理下にあるその他の会社が含まれます。</li>
+<li> <strong>ビジネスパートナーと：</strong>特定の製品、サービス、またはプロモーションを提供するために、お客様の情報をビジネスパートナーと共有する場合があります。</li>
+<li> <strong>他のユーザーと：</strong>個人情報を共有したり、公共の場で他のユーザーとやり取りしたりすると、そのような情報はすべてのユーザーに表示され、外部に公開される可能性があります。</li>
+<li> <strong>お客様の同意を得て</strong>：当社は、お客様の同意を得て、その他の目的でお客様の個人情報を開示する場合があります。</li>
+</ul>
+<h2>個人データの保持</h2>
+<p>当社は、このプライバシーポリシーに記載されている目的に必要な期間のみ、お客様の個人データを保持します。当社は、法的義務を遵守するために必要な範囲で（たとえば、適用法を遵守するためにお客様のデータを保持する必要がある場合）、お客様の個人データを保持および使用し、紛争を解決し、当社の法的合意およびポリシーを施行します。</p>
+<p>当社は、内部分析の目的で使用状況データも保持します。使用状況データは、セキュリティの強化またはサービスの機能の向上のために使用される場合、またはこのデータを長期間保持することが法的に義務付けられている場合を除き、通常、より短い期間保持されます。</p>
+<h2>個人データの転送</h2>
+<p>個人データを含むお客様の情報は、当社の営業所および処理に関与する当事者が所在するその他の場所で処理されます。これは、この情報が、データ保護法がお客様の管轄とは異なる可能性がある、お客様の州、州、国、またはその他の行政管轄外にあるコンピューターに転送され、維持される可能性があることを意味します。</p>
+<p>このプライバシーポリシーへの同意とそれに続くそのような情報の提出は、その転送への同意を表します。</p>
+<p>当社は、お客様のデータが安全に扱われ、このプライバシーポリシーに準拠するために合理的に必要なすべての措置を講じ、以下を含む適切な管理が行われていない限り、お客様の個人データが組織または国に転送されることはありません。お客様のデータおよびその他の個人情報のセキュリティ。</p>
+<h2>個人データの開示</h2>
+<h3>商取引</h3>
+<p>当社が合併、買収、または資産売却に関与している場合、お客様の個人データが転送される場合があります。お客様の個人データが転送され、別のプライバシーポリシーの対象となる前に、通知を行います。</p>
+<h3>法執行</h3>
+<p>特定の状況下では、法律によって、または公的機関（裁判所や政府機関など）からの有効な要求に応じて、開示が必要な場合、会社はお客様の個人データの開示を求められる場合があります。</p>
+<h3>その他の法的要件</h3>
+<p>当社は、そのような行動が以下の目的で必要であると誠実に信じて、お客様の個人データを開示する場合があります。</p>
+<ul>
+<li>法的義務を遵守する</li>
+<li>会社の権利または財産を保護および防御する</li>
+<li>サービスに関連して発生する可能性のある不正行為を防止または調査します</li>
+<li>サービスのユーザーまたは一般の人々の個人的な安全を保護する</li>
+<li>法的責任から保護する</li>
+</ul>
+<h2>個人データのセキュリティ</h2>
+<p>お客様の個人データのセキュリティは当社にとって重要ですが、インターネットを介した送信方法や電子ストレージの方法は100％安全ではないことを忘れないでください。当社は、お客様の個人データを保護するために商業的に受け入れられる手段を使用するよう努めていますが、その絶対的なセキュリティを保証することはできません。</p>
+<h1>子供のプライバシー</h1>
+<p>当社のサービスは13歳未満の人には対応していません。13歳未満の人から故意に個人を特定できる情報を収集することはありません。あなたが親または保護者であり、あなたの子供が私たちに個人情報を提供したことを知っている場合データはお問い合わせください。保護者の同意を確認せずに13歳未満の人から個人データを収集したことに気付いた場合、その情報をサーバーから削除する措置を講じます。</p>
+<p>お客様の情報を処理するための法的根拠として同意に依存する必要があり、お客様の国で保護者の同意が必要な場合、その情報を収集して使用する前に、保護者の同意が必要になる場合があります。</p>
+<h1>他のウェブサイトへのリンク</h1>
+<p>当社のサービスには、当社が運営していない他のウェブサイトへのリンクが含まれている場合があります。サードパーティのリンクをクリックすると、そのサードパーティのサイトに移動します。アクセスするすべてのサイトのプライバシーポリシーを確認することを強くお勧めします。</p>
+<p>当社は、第三者のサイトまたはサービスのコンテンツ、プライバシーポリシー、または慣行を管理することはできず、責任を負わないものとします。</p>
+<h1>このプライバシーポリシーの変更</h1>
+<p>プライバシーポリシーは随時更新される場合があります。このページに新しいプライバシーポリシーを掲載することにより、変更があれば通知します。</p>
+<p>変更がないか、このプライバシーポリシーを定期的に確認することをお勧めします。このプライバシーポリシーの変更は、このページに掲載された時点で有効になります。</p>
+<h1>翻訳通訳</h1>
+<p>このプライバシーポリシーは、当社のサービスでお客様が利用できるようにした場合、翻訳されている可能性があります。
+紛争が発生した場合は、元の英語のテキストが優先されることに同意するものとします。</p>
+<h1>お問い合わせ</h1>
+<p>このプライバシーポリシーについて質問がある場合は、お問い合わせください：</p>
+<ul>
+<li>
+<p>メール：poofties@middlepot.com </p>
+</li>
+<li>
+<p>当社のウェブサイトのこのページにアクセスする：<a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a> </p>
+</li>
+</ul>
+<br>
+</div>
+</div>
+
+<br><br>
+
+<img id="img_terms_en" src="./img/terms_en.png"/>
+<img id="img_terms_pt" style="display: none;" src="./img/terms_pt.png"/>
+<img id="img_terms_jp" style="display: none;" src="./img/terms_jp.png"/>
+<br><br>
+<div class="box" id="text_terms_en" style="display: block; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p>Last updated: September 20, 2021</p>
+<p>Please read these terms and conditions carefully before using Our Service.</p>
+<h1>Interpretation and Definitions</h1>
+<h2>Interpretation</h2>
+<p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h2>Definitions</h2>
+<p>For the purposes of these Terms and Conditions:</p>
+<ul>
+<li>
+<p><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</p>
+</li>
+<li>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to the poofties franchise.</p>
+</li>
+<li>
+<p><strong>Country</strong> refers to Brazil.</p>
+</li>
+<li>
+<p><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</p>
+</li>
+<li>
+<p><strong>Service</strong> refers to the poofties franchise Products.</p>
+</li>
+<li>
+<p><strong>Terms and Conditions</strong> (also referred as &quot;Terms&quot;) mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.</p>
+</li>
+<li>
+<p><strong>Third-party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</p>
+</li>
+<li>
+<p><strong>Products</strong> refers to the poofties franchise Products.</p>
+</li>
+<li>
+<p><strong>Website</strong> refers to the poofties franchise Website, accessible from <a href="https://poofties.club" rel="external nofollow noopener" target="_blank">https://poofties.club</a></p>
+</li>
+<li>
+<p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+</li>
+</ul>
+<h1>Acknowledgment</h1>
+<p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
+<p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
+<p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
+<p>You represent that you are over the age of 13. The Company does not permit those under 13 to use the Service.</p>
+<p>Your access to and use of the Service is also conditioned on Your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your personal information when You use the Application or the Products and/or Website and tells You about Your privacy rights and how the law protects You. Please read Our Privacy Policy carefully before using Our Service.</p>
+<h1>Links to Other Websites</h1>
+<p>Our Service may contain links to third-party web sites or services that are not owned or controlled by the Company.</p>
+<p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+<p>We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites or services that You visit.</p>
+<h1>Prohibited Activities</h1>
+<p>You may not access or use the Products and/or Website for any purpose other than that for which we make the Products and/or Website available. The Products and/or Website may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.</p>
+<p>As a user of the Products and/or Website, you agree to follow these rules:</p>
+<ul>
+<li>
+<p><strong>Respect Others:</strong> We do not tolerate bullying, bothering or being mean to others. That includes practices that disrupt order, such as spam and phishing attempts.</p>
+</li>
+<li>
+<p><strong>No Bad Words:</strong> We do not allow any rude, inappropriate language or behavior. This includes swearing, racism, talking about drugs, sex or alcohol.</p>
+</li>
+<li>
+<p><strong>No Cheating:</strong> We do not allow the use of 3rd party programs used to gain advantage.</p>
+</li>
+</ul>
+<h1>Termination</h1>
+<p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions. The list of rules is not exhaustive, so we reserve the right to take actions against anything we deem harmful to the Products and/or Website.</p>
+<p>Upon termination, Your right to use the Service will cease immediately.</p>
+<h1>Limitation of Liability</h1>
+<p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service.</p>
+<p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.</p>
+<p>Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.</p>
+<h1>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h1>
+<p>The Service is provided to You &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.</p>
+<p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
+<p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
+<h1>Governing Law</h1>
+<p>The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+<h1>Disputes Resolution</h1>
+<p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
+<h1>For European Union (EU) Users</h1>
+<p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which you are resident in.</p>
+<h1>Severability and Waiver</h1>
+<h2>Severability</h2>
+<p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
+<h2>Waiver</h2>
+<p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under this Terms shall not effect a party's ability to exercise such right or require such performance at any time thereafter nor shall be the waiver of a breach constitute a waiver of any subsequent breach.</p>
+<h1>Changes to These Terms and Conditions</h1>
+<p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide a notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
+<p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Products and/or Website and the Service.</p>
+<h1>Translation Interpretation</h1>
+<p>These Terms and Conditions may have been translated if we have made them available to You on our Service.
+You agree that the original English text shall prevail in the case of a dispute.</p>
+<h1>Contact Us</h1>
+<p>If you have any questions about these Terms and Conditions, You can contact us:</p>
+<ul>
+<li>
+<p>By email: poofties@middlepot.com</p>
+</li>
+<li>
+<p>By visiting this page on our Website: <a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a></p>
+</li>
+</ul>
+<br>
+</div>
+</div>
+
+<div class="box" id="text_terms_pt" style="display: none; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p> Última atualização: 20 de setembro de 2021 </p>
+<p> Por favor, leia estes termos e condições cuidadosamente antes de usar nosso serviço. </p>
+<h1> Interpretação e definições </h1>
+<h2> Interpretação </h2>
+<p> As palavras cuja letra inicial é maiúscula têm significados definidos nas seguintes condições. As seguintes definições devem ter o mesmo significado, independentemente de aparecerem no singular ou no plural. </p>
+<h2> Definições </h2>
+<p> Para os fins destes Termos e Condições: </p>
+<ul>
+<li>
+<p> <strong> Afiliado </strong> significa uma entidade que controla, é controlada ou está sob o controle comum de uma parte, onde &quot; controle &quot; significa a propriedade de 50% ou mais das ações, participação acionária ou outros valores mobiliários com direito a voto para eleição de diretores ou outra autoridade administrativa. </p>
+</li>
+<li>
+<p> <strong> Empresa </strong> (referida como &quot; a Empresa &quot;, &quot; Nós &quot;, &quot; Nós &quot; ou &quot; Nossos &quot; neste Contrato) refere-se a franquia poofties. </p>
+</li>
+<li>
+<p><strong>País</strong> refere-se ao Brasil.</p>
+</li>
+<li>
+<p> <strong> Dispositivo </strong> significa qualquer dispositivo que pode acessar o Serviço, como um computador, um telefone celular ou um tablet digital. </p>
+</li>
+<li>
+<p> <strong> Serviço </strong> refere-se a franquia poofties. </p>
+</li>
+<li>
+<p> <strong> Termos e Condições </strong> (também chamados de &quot; Termos &quot;) significa estes Termos e Condições que constituem o acordo completo entre Você e a Empresa com relação ao uso do Serviço. </p>
+</li>
+<li>
+<p> <strong> Serviço de mídia social de terceiros </strong> significa qualquer serviço ou conteúdo (incluindo dados, informações, produtos ou serviços) fornecido por um terceiro que pode ser exibido, incluído ou disponibilizado pelo Serviço. </p>
+</li>
+<li>
+<p> <strong> Produtos </strong> refere-se aos produtos da franquia poofties. </p>
+</li>
+<li>
+<p> <strong> Website </strong> refere-se ao Website da franquia poofties, acessível em <a href="https://poofties.club" rel="external nofollow noopener" target="_blank">https://poofties.club</a> </p>
+</li>
+<li>
+<p> <strong> Você </strong> significa o indivíduo que acessa ou usa o Serviço, ou a empresa ou outra pessoa jurídica em nome da qual esse indivíduo está acessando ou usando o Serviço, conforme aplicável. </p>
+</li>
+</ul>
+<h1> Reconhecimento </h1>
+<p> Estes são os Termos e Condições que regem o uso deste Serviço e do contrato que opera entre Você e a Empresa. Estes Termos e Condições estabelecem os direitos e obrigações de todos os usuários em relação ao uso do Serviço. </p>
+<p> Seu acesso e uso do Serviço estão condicionados à sua aceitação e conformidade com estes Termos e Condições. Estes Termos e Condições se aplicam a todos os visitantes, usuários e outras pessoas que acessam ou usam o Serviço. </p>
+<p> Ao acessar ou usar o Serviço, você concorda em obedecer a estes Termos e Condições. Se você discordar de qualquer parte destes Termos e Condições, você não poderá acessar o Serviço. </p>
+<p> Você declara que tem mais de 13 anos de idade. A Empresa não permite que menores de 13 anos usem o Serviço. </p>
+<p> Seu acesso e uso do Serviço também estão condicionados à sua aceitação e conformidade com a Política de Privacidade da Empresa. Nossa Política de Privacidade descreve nossas políticas e procedimentos sobre a coleta, uso e divulgação de Suas informações pessoais quando Você usa o Aplicativo ou o Produto e / ou Site e informa sobre Seus direitos de privacidade e como a lei o protege. Por favor, leia nossa Política de Privacidade cuidadosamente antes de usar nosso serviço. </p>
+<h1> Links para outros sites </h1>
+<p> Nosso serviço pode conter links para sites ou serviços de terceiros que não são de propriedade ou controlados pela empresa. </p>
+<p> A Empresa não tem controle e não assume responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros. Você também reconhece e concorda que a Empresa não será responsável ou responsabilizada, direta ou indiretamente, por qualquer dano ou perda causado ou alegadamente causado por ou em conexão com o uso ou confiança em qualquer conteúdo, bens ou serviços disponíveis em ou por meio de qualquer um desses sites ou serviços. </p>
+<p> Aconselhamos vivamente que leia os termos e condições e políticas de privacidade de quaisquer sites ou serviços de terceiros que visite. </p> 
+<h1> Atividades proibidas </h1>
+<p> Você não pode acessar ou usar o Produto e / ou Site para qualquer propósito diferente daquele para o qual disponibilizamos o Produto e / ou Site. O Produto e / ou site não pode ser usado em conexão com quaisquer empreendimentos comerciais, exceto aqueles que são especificamente endossados ​​ou aprovados por nós. </p>
+<p> Como um usuário do Produto e / ou site, você concorda em seguir estas regras: </p>
+<ul>
+<li>
+<p> <strong> Respeite os outros: </strong> não toleramos bullying, incomodar ou ser maus com os outros. Isso inclui práticas que interrompem a ordem, como spam e tentativas de phishing. </p>
+</li>
+<li>
+<p> <strong> Sem palavrões: </strong> não permitimos linguagem ou comportamento rude e impróprio. Isso inclui palavrões, racismo, falar sobre drogas, sexo ou álcool. </p>
+</li>
+<li>
+<p> <strong> Sem trapaça: </strong> não permitimos o uso de programas de terceiros usados ​​para obter vantagens. </p>
+</li>
+</ul>
+<h1> Rescisão </h1>
+<p> Podemos encerrar ou suspender o seu acesso imediatamente, sem aviso prévio ou responsabilidade, por qualquer motivo, incluindo, sem limitação, se você violar estes Termos e Condições. A lista de regras não é exaustiva, portanto, nos reservamos o direito de tomar medidas contra qualquer coisa que julgarmos prejudicial ao Produto e / ou site. </p>
+<p> Após a rescisão, Seu direito de usar o Serviço cessará imediatamente. </p>
+<h1> Limitação de responsabilidade </h1>
+<p> Não obstante quaisquer danos em que Você possa incorrer, toda a responsabilidade da Empresa e de qualquer um de seus fornecedores sob qualquer disposição destes Termos e Seu recurso exclusivo para todos os anteriores serão limitados ao valor realmente pago por Você por meio do Serviço . </p>
+<p> Na extensão máxima permitida pela lei aplicável, em nenhum caso a Empresa ou seus fornecedores serão responsáveis ​​por quaisquer danos especiais, incidentais, indiretos ou consequenciais (incluindo, mas não se limitando a, danos por lucros cessantes, perdas de dados ou outras informações, para interrupção de negócios, danos pessoais, perda de privacidade decorrente de ou de qualquer forma relacionada ao uso ou incapacidade de usar o Serviço, software de terceiros e / ou hardware de terceiros usado com o Serviço, ou de outra forma em conexão com qualquer disposição destes Termos), mesmo se a Empresa ou qualquer fornecedor tiver sido avisado da possibilidade de tais danos e mesmo se a solução falhar em seu propósito essencial. </p>
+<p> Alguns estados não permitem a exclusão de garantias implícitas ou limitação de responsabilidade por danos incidentais ou conseqüenciais, o que significa que algumas das limitações acima podem não se aplicar. Nesses estados, a responsabilidade de cada parte será limitada ao máximo permitido por lei. </p>
+<h1>&quot; COMO ESTÁ &quot; e &quot; CONFORME DISPONÍVEL &quot; Isenção de responsabilidade </h1>
+<p> O Serviço é fornecido a você &quot; COMO ESTÁ &quot; e &quot; CONFORME DISPONÍVEL &quot; e com todas as falhas e defeitos sem garantia de qualquer espécie. Até a extensão máxima permitida pela lei aplicável, a Empresa, em seu próprio nome e em nome de suas Afiliadas e seus respectivos licenciantes e prestadores de serviços, renuncia expressamente a todas as garantias, sejam expressas, implícitas, estatutárias ou de outra forma, com relação ao Serviço, incluindo todas as garantias implícitas de comercialização, adequação a um propósito específico, título e não violação, e garantias que podem surgir durante a negociação, desempenho, uso ou prática comercial. Sem limitação ao precedente, a Empresa não oferece nenhuma garantia ou compromisso, e não faz qualquer representação de qualquer tipo de que o Serviço atenderá aos seus requisitos, alcançará os resultados pretendidos, será compatível ou funcionará com qualquer outro software, aplicativo, sistema ou serviço, operará sem interrupção, atenda a quaisquer padrões de desempenho ou confiabilidade ou esteja livre de erros ou que quaisquer erros ou defeitos possam ou serão corrigidos. </p>
+<p> Sem limitar o precedente, nem a Empresa nem qualquer um dos fornecedores da empresa fazem qualquer representação ou garantia de qualquer tipo, expressa ou implícita: (i) quanto à operação ou disponibilidade do Serviço, ou as informações, conteúdo e materiais ou produtos neles incluídos; (ii) que o Serviço será ininterrupto ou livre de erros; (iii) quanto à precisão, confiabilidade ou atualidade de qualquer informação ou conteúdo fornecido por meio do Serviço; ou (iv) que o Serviço, seus servidores, o conteúdo ou e-mails enviados de ou em nome da Empresa estão livres de vírus, scripts, cavalos de tróia, worms, malware, timebombs ou outros componentes prejudiciais. </p>
+<p> Algumas jurisdições não permitem a exclusão de certos tipos de garantias ou limitações sobre os direitos legais aplicáveis ​​de um consumidor, portanto, algumas ou todas as exclusões e limitações acima podem não se aplicar a você. Mas, em tal caso, as exclusões e limitações estabelecidas nesta seção serão aplicadas na maior medida exequível sob a lei aplicável. </p> 
+<h1> Lei Aplicável </h1>
+<p> As leis do país, excluindo seus conflitos de regras legais, regerão estes Termos e o uso do Serviço por você. O uso do Aplicativo também pode estar sujeito a outras leis locais, estaduais, nacionais ou internacionais. </p>
+<h1> Resolução de disputas </h1>
+<p> Se você tiver qualquer dúvida ou dúvida sobre o Serviço, concorda em primeiro tentar resolver a disputa informalmente entrando em contato com a Empresa. </p>
+<h1> Para usuários da União Europeia (UE) </h1>
+<p> Se você é um consumidor da União Europeia, se beneficia de todas as disposições obrigatórias da lei do país em que reside. </p>
+<h1> Divisibilidade e renúncia </h1>
+<h2> Divisibilidade </h2>
+<p> Se qualquer disposição destes Termos for considerada inexequível ou inválida, tal disposição será alterada e interpretada para cumprir os objetivos de tal disposição na maior medida possível sob a lei aplicável e as disposições restantes continuarão em pleno vigor e efeito . </p>
+<h2> Renúncia </h2>
+<p> Exceto conforme disposto neste documento, a falha em exercer um direito ou exigir o cumprimento de uma obrigação sob estes Termos não afetará a capacidade de uma parte de exercer tal direito ou exigir tal cumprimento em qualquer momento posterior, nem será a renúncia de uma violação constitui uma renúncia a qualquer violação subsequente. </p>
+<h1> Alterações a estes Termos e Condições </h1>
+<p> Nós nos reservamos o direito, a nosso exclusivo critério, de modificar ou substituir estes Termos a qualquer momento. Se uma revisão for material, faremos todos os esforços razoáveis ​​para fornecer um aviso antes que quaisquer novos termos entrem em vigor. O que constitui uma alteração material será determinado a nosso exclusivo critério. </p>
+<p> Ao continuar a acessar ou usar nosso serviço depois que essas revisões entrarem em vigor, você concorda em obedecer aos termos revisados. Se você não concordar com os novos termos, no todo ou em parte, pare de usar o Produto e / ou Site e o Serviço. </p>
+<h1> Tradução Interpretação </h1>
+<p> Estes Termos e Condições podem ter sido traduzidos se os tivermos disponibilizado para você em nosso serviço.
+Você concorda que o texto original em inglês prevalecerá em caso de disputa. </p>
+<h1> Entre em contato conosco </h1>
+<p> Se você tiver alguma dúvida sobre estes Termos e Condições, pode entrar em contato conosco: </p>
+<ul>
+<li>
+<p> Por e-mail: poofties@middlepot.com </p>
+</li>
+<li>
+<p> Visitando esta página em nosso Website: <a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a> </p> 
+</li>
+</ul>
+<br>
+</div>
+</div>
+
+<div class="box" id="text_terms_jp" style="display: none; text-align:left; font-family: Verdana; font-size: 10px; color: #9e8e8e; overflow: auto; overflow: scroll; width:400px; height:300px; resize: none; outline:none; line-height:18px;">
+<div style="padding:10px;">
+<p>最終更新日：2021年9月20日</p>
+<p>当社のサービスを使用する前に、これらの利用規約を注意深くお読みください。</p>
+<h1>解釈と定義</h1>
+<h2>解釈</h2>
+<p>頭文字が大文字になっている単語は、以下の条件で定義された意味を持ちます。以下の定義は、単数形であるか複数形であるかに関係なく、同じ意味を持つものとします。</p>
+<h2>定義</h2>
+<p>これらの利用規約の目的のために：</p>
+<ul>
+<li>
+<p> <strong>アフィリエイト</strong>とは、当事者を管理する、当事者によって管理される、または当事者と共通の管理下にあるエンティティを意味します。ここで、「管理」は取締役またはその他の管理当局の選任に投票する権利を有する株式、株式持分またはその他の証券の50％以上の所有権を意味します。</p>
+</li>
+<li>
+<p> <strong>会社</strong>（本契約では「会社」、「私たち」、「私たち」、「私たち」のいずれかと呼ばれます）は、pooftiesフランチャイズを製品します。</p>
+</li>
+<li>
+<p><strong>国</strong>はブラジルを指します。</p>
+</li>
+<li>
+<p> <strong>デバイス</strong>とは、コンピューター、携帯電話、デジタルタブレットなど、サービスにアクセスできるすべてのデバイスを意味します。</p>
+</li>
+<li>
+<p> <strong>サービス</strong>とは、pooftiesフランチャイズやウェブサイトを製品します。</p>
+</li>
+<li>
+<p> <strong>利用規約</strong>（「利用規約」とも呼ばれます）とは、サービスの使用に関するお客様と会社の間の完全な合意を形成するこれらの利用規約を意味します。</p>
+</li>
+<li>
+<p> <strong>サードパーティのソーシャルメディアサービス</strong>とは、サービスによって表示、含まれる、または利用可能になる可能性のある、サードパーティによって提供されるサービスまたはコンテンツ（データ、情報、製品、またはサービスを含む）を意味します。 </p>
+</li>
+<li>
+<p> <strong>製品</strong>はpooftiesフランチャイズを製品します。</p>
+</li>
+<li>
+<p> <strong>ウェブサイト</strong>は、pooftiesフランチャイズウェブサイトを指し、<a href="https://poofties.club" rel="external nofollow noopener" target="_blank">https：//poofties.club</a> からアクセスできます。 </p>
+</li>
+<li>
+<p> <strong>あなた</strong>とは、本サービスにアクセスまたは使用する個人、会社、またはそのような個人が本サービスにアクセスまたは使用しているその他の法人を意味します。</p>
+</li>
+</ul>
+<h1>謝辞</h1>
+<p>これらは、本サービスの使用およびお客様と当社の間で機能する契約に適用される利用規約です。これらの利用規約は、サービスの使用に関するすべてのユーザーの権利と義務を定めています。</p>
+<p>サービスへのアクセスと使用は、これらの利用規約への同意と遵守を条件とします。これらの利用規約は、本サービスにアクセスまたは使用するすべての訪問者、ユーザー、その他に適用されます。</p>
+<p>サービスにアクセスまたは使用することにより、これらの利用規約に拘束されることに同意するものとします。これらの利用規約のいずれかの部分に同意しない場合は、サービスにアクセスできません。</p>
+<p>あなたは13歳以上であることを表明します。当社は13歳未満の人に本サービスの使用を許可していません。</p>
+<p>サービスへのアクセスと使用は、会社のプライバシーポリシーを受け入れて遵守することも条件とします。当社のプライバシーポリシーは、お客様がアプリケーションまたは製品および/またはウェブサイトを使用する際のお客様の個人情報の収集、使用、および開示に関する当社のポリシーと手順を説明し、お客様のプライバシー権と法律がお客様を保護する方法について説明します。当社のサービスを使用する前に、当社のプライバシーポリシーを注意深くお読みください。</p>
+<h1>他のウェブサイトへのリンク</h1>
+<p>当社のサービスには、当社が所有または管理していないサードパーティのWebサイトまたはサービスへのリンクが含まれている場合があります。</p>
+<p>当社は、第三者のWebサイトまたはサービスのコンテンツ、プライバシーポリシー、または慣行を管理することはできず、責任を負わないものとします。さらに、お客様は、当社が、で利用可能なそのようなコンテンツ、商品、またはサービスの使用または依存によって引き起こされた、または引き起こされたと主張されるいかなる損害または損失についても、直接的または間接的に責任を負わないことを認め、同意するものとします。またはそのようなWebサイトやサービスを通じて。</p>
+<p>アクセスするサードパーティのWebサイトまたはサービスの利用規約とプライバシーポリシーを読むことを強くお勧めします。</p>
+<h1>禁止されている活動</h1>
+<p>製品および/またはウェブサイトを利用可能にする目的以外の目的で、製品および/またはウェブサイトにアクセスまたは使用することはできません。製品および/またはウェブサイトは、当社によって特別に承認または承認されたものを除き、商業的活動に関連して使用することはできません。</p>
+<p>製品やウェブサイトのユーザーは、次のルールに従うことに同意するものとします。</p> 
+<ul>
+<li>
+<p> <strong>他者を尊重する：</strong>私たちは、他人をいじめたり、迷惑をかけたり、意地悪をしたりすることを容認しません。これには、スパムやフィッシングの試みなど、秩序を乱す慣行が含まれます。</p>
+</li>
+<li>
+<p> <strong>悪い言葉はありません：</strong>失礼な、不適切な言葉や振る舞いは許可されません。これには、誓い、人種差別、麻薬、性別、アルコールについて話すことが含まれます。</p>
+</li>
+<li>
+<p> <strong>不正行為なし：</strong>アドバンテージを得るために使用されるサードパーティプログラムの使用は許可されていません。</p>
+</li>
+</ul>
+<h1>終了</h1>
+<p>お客様がこれらの利用規約に違反した場合を含むがこれに限定されない理由を問わず、事前の通知または責任を負うことなく、お客様のアクセスを直ちに終了または一時停止する場合があります。ルールのリストは網羅的ではないため、製品やウェブサイトに有害であると当社が判断したものに対して措置を講じる権利を留保します。</p>
+<p>終了すると、本サービスを使用するお客様の権利は直ちに終了します。</p>
+<h1>責任の制限</h1>
+<p>お客様が被る可能性のある損害にかかわらず、本規約の規定に基づく当社およびそのサプライヤーの全責任および上記のすべてに対するお客様の唯一の救済は、本サービスを通じてお客様が実際に支払った金額に限定されるものとします。 。</p>
+<p>適用法で認められる最大限の範囲で、当社またはそのサプライヤーは、いかなる場合も、特別、偶発的、間接的、または結果的な損害（利益の損失、損失を含むがこれらに限定されない）に対して責任を負わないものとします。データまたはその他の情報、事業の中断、人身傷害、本サービスの使用または使用不能に起因または関連するプライバシーの喪失、サードパーティのソフトウェアおよび/またはサードパーティのハードウェア当社またはサプライヤーがそのような損害の可能性について知らされていた場合、および救済がその本質的な目的を達成できなかった場合でも、サービス、または本規約のいずれかの条項に関連して）。</p>
+<p>一部の州では、黙示の保証の除外または偶発的または結果的な損害に対する責任の制限が許可されていません。つまり、上記の制限の一部が適用されない場合があります。これらの州では、各当事者の責任は法律で認められる最大限の範囲に制限されます。</p>
+<h1>「現状有姿」および「利用可能な場合」免責事項</h1>
+<p>本サービスは「現状有姿」でお客様に提供されます。および「利用可能な場合」そして、いかなる種類の保証もなく、すべての欠陥と欠陥があります。適用法の下で許可される最大限の範囲で、当社は、当社自身およびその関連会社、ならびにそのそれぞれのライセンサーおよびサービスプロバイダーに代わって、明示、黙示、法定、またはその他を問わず、以下に関してすべての保証を明示的に否認します。商品性、特定の目的への適合性、権原および非侵害のすべての黙示の保証、および取引の過程、履行の過程、使用法または取引慣行から生じる可能性のある保証を含むサービス。上記に限定されることなく、当社は保証または約束を提供せず、サービスがお客様の要件を満たし、意図した結果を達成し、他のソフトウェア、アプリケーション、システムまたはサービスと互換性があり、動作し、動作することを表明しません。中断することなく、パフォーマンスまたは信頼性の基準を満たしているか、エラーがないか、エラーまたは欠陥が修正できるか、修正される予定です。</p>
+<p>上記を制限することなく、当社または当社のプロバイダーは、明示または黙示を問わず、いかなる種類の表明または保証も行いません。（i）サービスの運用または可用性、または情報、コンテンツ、およびそこに含まれる材料または製品。 （ii）サービスが中断されないかエラーがないこと。 （iii）本サービスを通じて提供される情報またはコンテンツの正確性、信頼性、または最新性について。または（iv）当社から、または当社に代わって送信されるサービス、そのサーバー、コンテンツ、または電子メールに、ウイルス、スクリプト、トロイの木馬、ワーム、マルウェア、時限爆弾、またはその他の有害なコンポーネントが含まれていないこと。</p>
+<p>一部の法域では、消費者の適用される法定権利に対する特定の種類の保証または制限の除外が許可されていないため、上記の除外および制限の一部またはすべてがお客様に適用されない場合があります。ただし、そのような場合、このセクションに記載されている除外および制限は、適用法の下で執行可能な最大限の範囲で適用されるものとします。</p>
+<h1>準拠法</h1>
+<p>抵触法の規則を除き、国の法律が本規約およびお客様による本サービスの使用に適用されるものとします。アプリケーションの使用は、他の地域、州、国内、または国際法の対象となる場合もあります。</p>
+<h1>紛争解決</h1>
+<p>本サービスについて懸念または紛争がある場合は、まず会社に連絡して非公式に紛争を解決することに同意するものとします。</p> 
+<h1>欧州連合（EU）ユーザー向け</h1>
+<p>あなたが欧州連合の消費者である場合、あなたはあなたが居住している国の法律の義務的な規定から利益を得るでしょう。</p>
+<h1>可分性と権利放棄</h1>
+<h2>可分性</h2>
+<p>本規約のいずれかの条項が執行不能または無効であると判断された場合、そのような条項は、適用法の下で可能な限りそのような条項の目的を達成するために変更および解釈され、残りの条項は引き続き完全に効力を有します。 。</p>
+<h2>権利放棄</h2>
+<p>本規約に規定されている場合を除き、本規約に基づく権利の行使または義務の履行の不履行は、当事者がそのような権利を行使する能力に影響を与えたり、その後いつでもそのような履行を要求したりすることはなく、違反の放棄とはなりません。その後の違反の放棄を構成します。</p>
+<h1>これらの利用規約の変更</h1>
+<p>当社は、独自の裁量により、いつでもこれらの規約を変更または置換する権利を留保します。改訂が重要な場合当社は、新しい条件が発効する前に通知を提供するために合理的な努力をします。重要な変更を構成するものは、当社の独自の裁量で決定されます。</p>
+<p>これらの改訂が有効になった後も引き続き当社のサービスにアクセスまたは使用することにより、お客様は改訂された条件に拘束されることに同意するものとします。新しい条件の全部または一部に同意しない場合は、製品および/またはウェブサイトおよびサービスの使用を中止してください。</p>
+<h1>翻訳通訳</h1>
+<p>これらの利用規約は、当社のサービスでお客様が利用できるようにした場合、翻訳されている可能性があります。
+紛争が発生した場合は、元の英語のテキストが優先されることに同意するものとします。</p>
+<h1>お問い合わせ</h1>
+<p>これらの利用規約についてご不明な点がございましたら、お問い合わせください。</p>
+<ul>
+<li>
+<p>メール：poofties@middlepot.com </p>
+</li>
+<li>
+<p>当社のウェブサイトのこのページにアクセスする：<a href="https://middlepot.com/contact" rel="external nofollow noopener" target="_blank">https://middlepot.com/contact</a> </p>
+</li>
+</ul>
+<br>
+</div>
+</div>
+
+</center>
+<br><br><br>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<script>
+	registerTranslatable('img_privacy');
+	registerTranslatable('text_privacy');
+	registerTranslatable('img_terms');
+	registerTranslatable('text_terms');
+	autoTranslate();
+</script>
+
+</body>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+</html>

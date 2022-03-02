@@ -1,0 +1,795 @@
+<html>
+<head>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+<title>poofties™</title>
+
+<link rel="shortcut icon" href="./img/favicon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta name="description" content="poofties™">
+<meta name="theme-color" content="#f7e9ed">
+<meta property="og:url" content="https://poofties.club">
+<meta property="og:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="og:description" content="poofties™">
+<meta property="og:image" content="https://middlepot.com/img/poofties.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://poofties.club">
+<meta property="twitter:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="twitter:description" content="poofties™">
+<meta property="twitter:image" content="https://middlepot.com/img/poofties.jpg">
+
+<script language= "JavaScript">
+location.href="https://poofties.club/account/forgot"
+</script>
+
+<meta name="google-site-verification" content="XSwoCWBrpJECWQJaaNREq2GeweamSFmo78j2dJ_F3AA" />
+
+<style>
+body{ 
+  cursor: url(./img/cursor.png), progress;}
+a:hover {cursor: url(./img/cursorhover.png), progress;
+  
+  }
+ ::selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+ ::-moz-selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+</style>
+<style type="text/css">
+::-webkit-scrollbar {
+width: 4px;
+height: 4px;
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background-color: #f9f0ed;
+-webkit-border-radius: 0ex;
+border: 1px dotted #e2d5d0;
+}
+#linkbjinho { color: #bca7a7; padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinho { padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinhoo { padding-bottom: 2px; border-bottom:1px dotted #e8c1c5; }</style>
+
+<!--
+tooooooooltip
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="./js/cookies.js"></script>
+<script src="./js/util.js"></script>
+
+<script>
+(function($){
+	var methods={
+		init:function(options){
+			var defaults={ 
+				tip_follows_cursor:false, //tooltip follows cursor: boolean
+				tip_delay_time:700, //tooltip delay before displaying: milliseconds
+				tip_fade_speed:300, //tooltip fade in/out speed: milliseconds
+				attribute:"title" //tooltip text come from this attribute
+			},
+			options=$.extend(defaults,options);
+			if($("#s-m-t-tooltip").length===0){
+				$("body").append("<div id='s-m-t-tooltip'><div></div></div>");
+			}
+			var smtTooltip=$("#s-m-t-tooltip"); 
+			smtTooltip.css({"position":"absolute","display":"none"}).data("smt-z-index",smtTooltip.css("z-index")).children("div").css({"width":"100%","height":"100%"});
+			function smtGetCursorCoords(event){
+				var smtCursorCoordsX=event.pageX,
+					smtCursorCoordsY=event.pageY;
+				smtTooltip.style_my_tooltips("position",{
+					smtCursorCoordsX:smtCursorCoordsX,
+					smtCursorCoordsY:smtCursorCoordsY
+				});
+			}
+			$(".smt-current-element").live("mouseout mousedown click",function(){
+				var $this=$(this);
+				clearTimeout(smtTooltip_delay);
+				smtTooltip.style_my_tooltips("hide",{
+					speed:$this.data("smt-fade-speed")
+				});
+				$(document).unbind("mousemove");
+				$this.removeClass("smt-current-element");
+				if($this.attr(options.attribute)===""){
+					$this.attr(options.attribute,$this.data("smt-title"));
+				}
+			});
+			return this["live"]("mouseover",function(event){
+				var $this=$(this),
+					title=$this.attr(options.attribute);
+				$this.addClass("smt-current-element").data({"smt-title":title,"smt-fade-speed":options.tip_fade_speed}).attr(options.attribute,"");
+				smtTooltip.style_my_tooltips("update",{
+					title:title,
+					speed:options.tip_fade_speed,
+					delay:options.tip_delay_time,
+					tip_follows_cursor:options.tip_follows_cursor
+				});
+				$(document).bind("mousemove", function(event){
+					smtGetCursorCoords(event); 
+				});
+			});
+		},
+		update:function(options){
+			var $this=$(this);
+			$this.stop().css({"display":"none","z-index":$this.data("smt-z-index")}).children("div").text(options.title);
+			smtTooltip_delay=setTimeout(function(){
+				$this.style_my_tooltips("show",{
+					speed:options.speed,
+					tip_follows_cursor:options.tip_follows_cursor
+				})
+			}, options.delay);
+		},
+		show:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,1);
+			if(!options.tip_follows_cursor){
+				$(document).unbind("mousemove");
+			}
+		},
+		hide:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,0,function(){
+				$this.css({"z-index":"-1"});
+			});
+		},
+		position:function(options){
+			var $this=$(this),
+				winScrollX=$(window).scrollLeft(),
+				winScrollY=$(window).scrollTop(),
+				tipWidth=$this.outerWidth(true),
+				tipHeight=$this.outerHeight(true),
+				leftOffset=(options.smtCursorCoordsX+tipWidth)-winScrollX,
+				topOffset=(options.smtCursorCoordsY+tipHeight)-winScrollY;
+			if(leftOffset<=$(window).width() && leftOffset<=$(document).width()){
+				$this.css("left",options.smtCursorCoordsX);
+			}else{
+				var thePosX=options.smtCursorCoordsX-tipWidth;
+				if(thePosX>=winScrollX){
+					$this.css("left",thePosX);
+				}else{
+					$this.css("left",winScrollX);
+				}
+			}
+			if(topOffset<=$(window).height() && topOffset<=$(document).height()){
+				$this.css("top",options.smtCursorCoordsY);
+			}else{
+				var thePosY=options.smtCursorCoordsY-tipHeight;
+				if(thePosY>=winScrollY){
+					$this.css("top",thePosY);
+				}else{
+					$this.css("top",winScrollY);
+				}
+			}
+		}
+	}
+	$.fn.style_my_tooltips=function(method){
+		if(methods[method]){
+			return methods[method].apply(this,Array.prototype.slice.call(arguments,1));
+		}else if(typeof method==="object" || !method){
+			return methods.init.apply(this,arguments);
+		}else{
+			$.error("Method "+method+" does not exist");
+		}
+	};
+})(jQuery);  
+</script>
+<script>
+
+(function($){
+
+$(document).ready(function(){
+
+$("a[title]").style_my_tooltips({
+
+tip_follows_cursor:true,
+
+tip_delay_time:90,
+
+tip_fade_speed:600,
+
+attribute:"title"
+
+});
+
+});
+
+})(jQuery);
+
+</script>
+<!--tooltip!-->
+<style>
+.tooltip{
+    display: inline;
+    position: relative;
+}
+#s-m-t-tooltip {
+max-width:300px; /*how big the tooltip can be at most*/
+border-radius: 0px; /*change your border radius*/
+padding:3px 4px 5px 4px; /*padding inside tooltip*/
+margin:10px 7px -2px 10px; /*distance from word*/
+background-color:#fcf6f2; /*background color*/ 
+  border:1px dotted #CEB6B6; /*border info*/
+  font-family:tahoma; /*tooltip font*/
+font-size:7px; /*tooltip font size*/
+letter-spacing:2px; /*tooltip letter spacing*/
+color:#CEB6B6; /*tooltip font color*/
+z-index:9999;
+}
+</style>
+
+<!--
+menuuuuuuuuuuuuuuu
+-->
+<html xmlns="https://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: Verdana;
+			}
+			
+			ul {
+				list-style: none
+			}
+			
+			#context_menu {
+				background: #fcf6f2;
+				-moz-border-radius: 1px 1px;
+				border: 1px dotted #baada3;
+				letter-spacing:1px; 
+				width: 72px;
+				font-size: 8px;
+				position: absolute;
+				display: none;
+				z-index:999;
+			}
+			
+			#context_menu ul li {
+				padding: 4px 4px;
+				-moz-border-radius: 10px 10px;
+				cursor: url(https://i.imgur.com/IJhQJq5.png), progress;
+			}
+			
+			#context_menu ul li:hover {
+				background: #fcf6f2;
+				color: #baada3;
+			}
+		</style>
+		<script type="text/javascript" language="JavaScript">
+			function click(e){
+				document.getElementById("teste").innerHTML = "";
+				var menu = document.getElementById("context_menu");
+				var mouseEvent = e || event;
+				if (mouseEvent.button == 2 || mouseEvent.button == 3) {
+					mostrar(mouseEvent);
+					menu.onmouseout = function(e){
+						var mouseEvent = e || event;
+						var element = mouseEvent.relatedTarget || mouseEvent.toElement; 
+						if (element.nodeName != "LI") {
+							mouseEvent.toElement;
+						}
+					};
+				}
+				if (mouseEvent.button == 0 || mouseEvent.button == 1) {
+					esconder();
+				}
+			}
+			
+			document.onmousedown = click;
+			document.oncontextmenu = function(){
+				return false
+			};
+			function mostrar(e){
+				var menu = document.getElementById("context_menu");
+				menu.style.display = "block";
+				menu.style.top = e.pageY + 5 + "px";
+				menu.style.left = e.pageX + 5 + "px";
+			}
+			
+			function esconder(){
+				setTimeout(function(){
+					var menu = document.getElementById("context_menu");
+					menu.style.display = "none"
+				}, 100);
+			}
+			
+		</script>
+	</head>
+		<div id="teste"></div>
+		<div id="context_menu">
+			<ul>
+				<li><font color="#baada3"> ‌ take care ♡</font></li>
+			</ul>
+		</div>
+<!--
+menuuuuuuuuuuuuuuu
+-->
+
+</head>
+
+<body ondragstart="return false" style="background-image:url(./img/bg.jpg); background-repeat: no-repeat; background-size: cover; background-color:#fefbfb; font-family: Verdana; font-size: 10px;">
+<style>
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+#base {
+position: absolute;
+	left: 350px;
+	top: 90px;
+overflow-y:hidden;
+overflow-x:hidden;
+ }
+#stuff {
+position: absolute;
+	left: 15px;
+	top: 54px;
+width: 594px;
+height: 415px;
+overflow-x:hidden;
+z-index: 6;
+ }
+#aaa {
+position: absolute;
+	left: 273px;
+	top: 522px;
+width: 100px;
+height: 100px;
+overflow-x:hidden;
+z-index: 3;
+ }
+@media screen and (max-width: 1000px) and (orientation: portrait){
+#everything { position: absolute; zoom: 145%;
+	left:590px;
+	top:-150px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg); }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 1700px) and (orientation: landscape){
+#everything { position: absolute; zoom: 120%;
+	left:90px;
+	top:35px; }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 2000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 100%; left:-80px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 3000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 240%;
+	left:90px;
+	top:35px; }
+}
+@media screen and (max-width: 1000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 80%; left:-50px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+.error-message {
+	color: #aa9194;
+	font-size: 9px;
+	padding-top:8px;
+	letter-spacing: 1px;
+	display: none;
+}
+</style>
+
+<div id="everything">
+
+<a href="/"><img style="position: absolute; left: 515px; top: 5px; z-index: 2;"
+src="./img/logo.png"></a><br><br>
+
+
+
+<a href="/account"><img style="position: absolute; left: 225px; top: 105px; z-index: 2;"
+src="./img/account.png" onMouseOver="this.src='./img/accounthover.png'"
+onMouseOut="this.src='./img/account.png'"></a><br><br>
+
+<a href="https://shybunny.store" target="_blank">
+<img style="position: absolute; left: 225px; top: 220px; z-index: 2;"
+src="./img/store.png" onMouseOver="this.src='./img/storehover.png'"
+onMouseOut="this.src='./img/store.png'"></a><br><br>
+
+<a href="/notes"><img style="position: absolute; left: 222px; top: 375px; z-index: 2;"
+src="./img/notes.png" onMouseOver="this.src='./img/noteshover.png'"
+onMouseOut="this.src='./img/notes.png'"></a><br><br>
+
+<a href="/thoughts"><img style="position: absolute; left: 220px; top: 505px; z-index: 2;"
+src="./img/thoughts.png" onMouseOver="this.src='./img/thoughtshover.png'"
+onMouseOut="this.src='./img/thoughts.png'"></a><br><br>
+
+
+<a href="/games"><img style="position: absolute; left: 995px; top: 90px; z-index: 2;"
+src="./img/games.png" onMouseOver="this.src='./img/gameshover.png'"
+onMouseOut="this.src='./img/games.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1010px; top: 248px; z-index: 2;"
+src="./img/cafe.png" onMouseOver="this.src='./img/cafehover.png'"
+onMouseOut="this.src='./img/cafe.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1020px; top: 375px; z-index: 2;"
+src="./img/bot.png" onMouseOver="this.src='./img/bothover.png'"
+onMouseOut="this.src='./img/bot.png'"></a><br><br>
+
+<a href="/series">
+<img style="position: absolute; left: 1010px; top: 490px; z-index: 2;"
+src="./img/series.png" onMouseOver="this.src='./img/serieshover.png'"
+onMouseOut="this.src='./img/series.png'"></a><br><br>
+
+<script>
+	async function changePrimaryEmail(){
+		var lang = getCurrentLanguage();
+		var secondary_email = document.getElementById('input_secondary_email_'+lang).value;
+		var password = document.getElementById('input_password_'+lang).value;
+		if(secondary_email){
+			document.getElementById('input_secondary_email_error_invalid_'+lang).style.display = 'none';
+			if(!validateEmail(secondary_email)){
+				document.getElementById('input_secondary_email_error_invalid_'+lang).style.display = 'block';
+				return;
+			}
+		}
+		else return;
+
+		if(!password){
+			return;
+		}
+
+		//shows overlay
+		showLoadingOverlay();
+
+		//check credentials
+		try{
+			document.getElementById('text_wentwrong_change_email_'+lang).style.display = 'none';
+			var res = await fetch(api_path+'/forgot/email',{
+				'method': 'POST',
+				credentials: 'include',
+				headers:{
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					secondary_email: secondary_email,
+					password: password
+				})
+			});
+			//wrong credentials
+			document.getElementById('input_change_email_error_invalid_'+lang).style.display = 'none';
+			if(!res.status || res.status >= 500){
+				throw new Error('something went wrong');
+			}
+			else if(res.status < 200 || res.status >= 300){
+				hideLoadingOverlay();
+				document.getElementById('input_change_email_error_invalid_'+lang).style.display = 'block';
+				return;
+			}
+			//all ok, show message
+			hideLoadingOverlay();
+			document.getElementById('img_loginsettings_'+lang).remove();
+			document.getElementById('text_forgot_password_'+lang).remove();
+			document.getElementById('input_secondary_email_'+lang).remove();
+			document.getElementById('input_password_'+lang).remove();
+			document.getElementById('input_email_'+lang).remove();
+			document.getElementById('text_forgot_secondary_email_'+lang).remove();
+			document.getElementById('input_email_2_'+lang).remove();
+			document.getElementById('input_password_2_'+lang).remove();
+			document.getElementById('input_secondary_email_send').remove();
+			document.getElementById('input_email_send').remove();
+			document.getElementById('input_email_2_send').remove();
+			//set message
+			document.getElementById('text_forgot_email_en').innerHTML = 'please, check your email !<br>make sure to check all the inbox labels, including the "promotions" tab and the spam folder.<br>you can also search for "poofties" on your email app !';
+			document.getElementById('text_forgot_email_pt').innerHTML = 'por favor, cheque seu email !<br>tenha certeza de checar todas as guias de inbox, incluindo a de "promoções" e a pasta de spam.<br>você também pode buscar por "poofties" em seu aplicativo de email !';
+			document.getElementById('text_forgot_email_jp').innerHTML = 'メールを確認してください !<br>[プロモーション]タブやスパムフォルダを含む, すべての受信トレイのラベルを必ず確認してください。<br>メールアプリで「poofties」を検索することもできます !';
+		}
+		catch(err){
+			hideLoadingOverlay();
+			document.getElementById('text_wentwrong_change_email_'+lang).style.display = 'block';
+		}
+	}
+
+	async function changePassword(){
+		var lang = getCurrentLanguage();
+		var email = document.getElementById('input_email_'+lang).value;
+		if(email){
+			document.getElementById('input_change_password_email_error_invalid_'+lang).style.display = 'none';
+			if(!validateEmail(email)){
+				document.getElementById('input_change_password_email_error_invalid_'+lang).style.display = 'block';
+				return;
+			}
+		}
+		else return;
+
+		//shows overlay
+		showLoadingOverlay();
+
+		//check credentials
+		try{
+			document.getElementById('text_wentwrong_change_password_'+lang).style.display = 'none';
+			var res = await fetch(api_path+'/forgot/password',{
+				'method': 'POST',
+				credentials: 'include',
+				headers:{
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email: email
+				})
+			});
+			//wrong credentials
+			document.getElementById('input_change_password_email_error_invalid_'+lang).style.display = 'none';
+			if(!res.status || res.status >= 500){
+				throw new Error('something went wrong');
+			}
+			else if(res.status < 200 || res.status >= 300){
+				hideLoadingOverlay();
+				document.getElementById('input_change_password_email_error_invalid_'+lang).style.display = 'block';
+				return;
+			}
+			//all ok, show message
+			hideLoadingOverlay();
+			document.getElementById('img_loginsettings_'+lang).remove();
+			document.getElementById('text_forgot_password_'+lang).remove();
+			document.getElementById('input_secondary_email_'+lang).remove();
+			document.getElementById('input_password_'+lang).remove();
+			document.getElementById('input_email_'+lang).remove();
+			document.getElementById('text_forgot_secondary_email_'+lang).remove();
+			document.getElementById('input_email_2_'+lang).remove();
+			document.getElementById('input_password_2_'+lang).remove();
+			document.getElementById('input_secondary_email_send').remove();
+			document.getElementById('input_email_send').remove();
+			document.getElementById('input_email_2_send').remove();
+			//set message
+			document.getElementById('text_forgot_email_en').innerHTML = 'please, check your email !<br>make sure to check all the inbox labels, including the "promotions" tab and the spam folder.<br>you can also search for "poofties" on your email app !';
+			document.getElementById('text_forgot_email_pt').innerHTML = 'por favor, cheque seu email !<br>tenha certeza de checar todas as guias de inbox, incluindo a de "promoções" e a pasta de spam.<br>você também pode buscar por "poofties" em seu aplicativo de email !';
+			document.getElementById('text_forgot_email_jp').innerHTML = 'メールを確認してください !<br>[プロモーション]タブやスパムフォルダを含む, すべての受信トレイのラベルを必ず確認してください。<br>メールアプリで「poofties」を検索することもできます !';
+		}
+		catch(err){
+			hideLoadingOverlay();
+			document.getElementById('text_wentwrong_change_password_'+lang).style.display = 'block';
+		}
+	}
+
+	async function changeSecondaryEmail(){
+		var lang = getCurrentLanguage();
+		var email = document.getElementById('input_email_2_'+lang).value;
+		var password = document.getElementById('input_password_2_'+lang).value;
+		document.getElementById('input_change_email_2_error_invalid_'+lang).style.display = 'none';
+		if(!email || !validateEmail(email) || !password || password.length < 8 || password.length > 32){
+			document.getElementById('input_change_email_2_error_invalid_'+lang).style.display = 'block';
+			return;
+		}
+
+		//shows overlay
+		showLoadingOverlay();
+
+		//check credentials
+		try{
+			document.getElementById('text_wentwrong_change_email_2_'+lang).style.display = 'none';
+			var res = await fetch(api_path+'/forgot/email-secondary',{
+				'method': 'POST',
+				credentials: 'include',
+				headers:{
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email: email,
+					password: password
+				})
+			});
+			//wrong credentials
+			document.getElementById('input_change_email_2_error_invalid_'+lang).style.display = 'none';
+			if(!res.status || res.status >= 500){
+				throw new Error('something went wrong');
+			}
+			else if(res.status < 200 || res.status >= 300){
+				hideLoadingOverlay();
+				document.getElementById('input_change_email_2_error_invalid_'+lang).style.display = 'block';
+				return;
+			}
+			//if location came
+			var body = await res.json();
+			if(!body.location){
+				throw new Error('something went wrong');
+			}
+			//all ok, redirect to email change page
+			window.location = body.location;
+		}
+		catch(err){
+			hideLoadingOverlay();
+			document.getElementById('text_wentwrong_change_email_2_'+lang).style.display = 'block';
+		}
+	}
+</script>
+
+<div id="base">
+
+<div id="aaa">
+<a id="linkzinho" href="https://middlepot.com" target="_blank" style="text-decoration: none;"><font color="#b09097">middlepot.com</font></a>
+</div>
+
+<img src="./img/base.png"/>
+
+<div id="stuff">
+<br>
+　　<a href="./login" id="linkbjinho" style="text-decoration: none;"><font color="#cfb4b8">login</a></font>
+
+<div style="position:absolute; left:5%; right:5%; line-height: 10px;">
+<center>
+<img id="img_loginsettings_en" src="./img/loginsettings_en.png"/>
+<img id="img_loginsettings_pt" style="display: none;" src="./img/loginsettings_pt.png"/>
+<img id="img_loginsettings_jp" style="display: none;" src="./img/loginsettings_jp.png"/>
+<br><br><br>
+<div style="line-height: 15px;">
+<font color="#b8a2a3" style="font-size:10px;">
+<span id="text_forgot_email_en">i forgot my email ..</span>
+<span id="text_forgot_email_pt" style="display: none;">esqueci meu email ..</span>
+<span id="text_forgot_email_jp" style="display: none;">メールを忘れた ..</span>
+<br>
+</div>
+<br>
+
+<style>
+tr { padding: 3px; text-align:center; }
+td { padding: 0px; text-align:center; max-width:200px; }
+th { padding: 3px; text-align:center; max-width:200px; font-weight:normal; padding:10px; }
+::placeholder { color:#bda4a4; opacity: 1; font-size: 8px; }
+::-ms-input-placeholder { color:#bda4a4; opacity: 1; font-size: 8px; }
+</style>
+
+<center>
+<input id="input_secondary_email_en" placeholder="type secondary email" maxlength="50" style="height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_secondary_email_pt" placeholder="digite email secundário" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_secondary_email_jp" placeholder="2次メールを入力してください" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+	<p class="error-message" id="input_secondary_email_error_invalid_en">invalid email !</p>
+	<p class="error-message" id="input_secondary_email_error_invalid_pt">email inválido !</p>
+	<p class="error-message" id="input_secondary_email_error_invalid_jp">無効なメール !</p>
+<br><br>
+<input type="password" id="input_password_en" placeholder="type your password" maxlength="50" style="height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input type="password" id="input_password_pt" placeholder="digite sua senha" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input type="password" id="input_password_jp" placeholder="パスワードを入力" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+	<p class="error-message" id="input_change_email_error_invalid_en">wrong email or password !</p>
+	<p class="error-message" id="input_change_email_error_invalid_pt">email ou senha errados !</p>
+	<p class="error-message" id="input_change_email_error_invalid_jp">メールアドレスまたはパスワードが間違っています !</p>
+<br><br>
+	<p class="error-message" id="text_wentwrong_change_email_en">something went wrong !</p>
+	<p class="error-message" id="text_wentwrong_change_email_pt">algo deu errado !</p>
+	<p class="error-message" id="text_wentwrong_change_email_jp">何かがうまくいかなかった !</p>
+<input id="input_secondary_email_send" style="width:50px; height:31px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/okbutton.png); cursor: url(./img/cursorhover.png), progress; outline: none;" type="button" onclick="changePrimaryEmail();"/>
+</center>
+
+
+<div style="position:absolute; left:5%; right:5%; line-height: 10px;">
+<br><br><br>
+<div style="line-height: 15px;">
+<font color="#b8a2a3" style="font-size:10px;">
+<span id="text_forgot_password_en">i forgot my password ..</span>
+<span id="text_forgot_password_pt" style="display: none;">esqueci minha senha ..</span>
+<span id="text_forgot_password_jp" style="display: none;">パスワードを忘れた ..</span>
+<br>
+</div>
+<br><br>
+
+<center>
+<input id="input_email_en" placeholder="type your email" maxlength="50" style="height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_email_pt" placeholder="digite seu email" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_email_jp" placeholder="メールを入力してください" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+	<p class="error-message" id="input_change_password_email_error_invalid_en">invalid email !</p>
+	<p class="error-message" id="input_change_password_email_error_invalid_pt">email inválido !</p>
+	<p class="error-message" id="input_change_password_email_error_invalid_jp">無効なメール !</p>
+<br><br>
+	<p class="error-message" id="text_wentwrong_change_password_en">something went wrong !</p>
+	<p class="error-message" id="text_wentwrong_change_password_pt">algo deu errado !</p>
+	<p class="error-message" id="text_wentwrong_change_password_jp">何かがうまくいかなかった !</p>
+<input id="input_email_send" style="width:50px; height:31px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/okbutton.png); cursor: url(./img/cursorhover.png), progress; outline: none;" type="button" onclick="changePassword();"/>
+</center>
+
+<div style="position:absolute; left:5%; right:5%; line-height: 10px;">
+<br><br><br>
+<div style="line-height: 15px;">
+<font color="#b8a2a3" style="font-size:10px;">
+<span id="text_forgot_secondary_email_en">i forgot my secondary email ..</span>
+<span id="text_forgot_secondary_email_pt" style="display: none;">esqueci meu email secundário ..</span>
+<span id="text_forgot_secondary_email_jp" style="display: none;">2次メールを忘れた ..</span>
+<br>
+</div>
+<br><br>
+
+<center>
+<input id="input_email_2_en" placeholder="type your email" maxlength="50" style="height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_email_2_pt" placeholder="digite seu email" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input id="input_email_2_jp" placeholder="メールを入力してください" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<br><br>
+<input type="password" id="input_password_2_en" placeholder="type your password" maxlength="50" style="height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input type="password" id="input_password_2_pt" placeholder="digite sua senha" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+<input type="password" id="input_password_2_jp" placeholder="パスワードを入力" maxlength="50" style="display: none; height:31px; width:140px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/textbox.png); outline:none; padding-left:5px; padding-right:5px; cursor: url(./img/cursorwrite.png), progress; font-family: Verdana; font-size: 10px; letter-spacing:1px; color:#b8a0a3; text-align:center;" />
+	<p class="error-message" id="input_change_email_2_error_invalid_en">wrong email or password !</p>
+	<p class="error-message" id="input_change_email_2_error_invalid_pt">email ou senha errados !</p>
+	<p class="error-message" id="input_change_email_2_error_invalid_jp">メールアドレスまたはパスワードが間違っています !</p>
+<br><br>
+	<p class="error-message" id="text_wentwrong_change_email_2_en">something went wrong !</p>
+	<p class="error-message" id="text_wentwrong_change_email_2_pt">algo deu errado !</p>
+	<p class="error-message" id="text_wentwrong_change_email_2_jp">何かがうまくいかなかった !</p>
+<input id="input_email_2_send" style="width:50px; height:31px; border: none; border-width: 0px !important; background-color: transparent; background-image:url(./img/okbutton.png); cursor: url(./img/cursorhover.png), progress; outline: none;" type="button" onclick="changeSecondaryEmail();"/>
+</center>
+
+<br><br><br>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div style="display: none; position:relative; float:right; right:20px; top:-5px;">
+<a><img src="./img/langbutton1.png" id="en" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton2.png" id="pt" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton3.png" id="jp" onclick="changeTranslation(this);"/></a>
+</div>
+
+<script>
+	registerTranslatable('img_loginsettings');
+	registerTranslatable('text_forgot_email');
+	registerTranslatable('text_forgot_password');
+	registerTranslatable('input_secondary_email');
+	registerTranslatable('input_password');
+	registerTranslatable('input_email');
+	registerTranslatable('text_forgot_secondary_email');
+	registerTranslatable('input_email_2');
+	registerTranslatable('input_password_2');
+	autoTranslate();
+</script>
+
+</body>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+</html>

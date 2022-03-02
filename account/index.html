@@ -1,0 +1,29 @@
+<html>
+    <head>
+<script language= "JavaScript">
+location.href="https://poofties.club/account"
+</script>
+        <script src="./js/cookies.js"></script>
+        <script src="./js/util.js"></script>
+        <script>
+            fetch(api_path+'/auth', {
+				'method': 'GET',
+                credentials: 'include',
+				headers:{
+					'Content-Type': 'application/json'
+				}
+			})
+            .then(res =>{
+                //not authenticated, login
+                if(!res.status || res.status !== 200){
+                    window.location = '/account/login.html';
+                    return;
+                }
+                //go to home
+                window.location = '/account/home.html';
+            })
+            .catch(() => window.location = '/account/login.html');
+        </script>
+    </head>
+    <body></body>
+</html>

@@ -1,0 +1,588 @@
+<html>
+<head>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+<title>poofties™</title>
+
+<link rel="shortcut icon" href="./img/favicon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta name="description" content="poofties™">
+<meta name="theme-color" content="#f7e9ed">
+<meta property="og:url" content="https://poofties.club">
+<meta property="og:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="og:description" content="poofties™">
+<meta property="og:image" content="https://middlepot.com/img/poofties.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://poofties.club">
+<meta property="twitter:title" content="꒰ ु ˊ ˘ `꒰ ू´ ˘ ` ू ꒱">
+<meta property="twitter:description" content="poofties™">
+<meta property="twitter:image" content="https://middlepot.com/img/poofties.jpg">
+
+<script language= "JavaScript">
+location.href="https://poofties.club/account/myfluffylife"
+</script>
+
+<meta name="google-site-verification" content="XSwoCWBrpJECWQJaaNREq2GeweamSFmo78j2dJ_F3AA" />
+
+<style>
+body{ 
+  cursor: url(./img/cursor.png), progress;}
+a:hover {cursor: url(./img/cursorhover.png), progress;}
+::selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+::-moz-selection {text-shadow: 0 0 2px #cec1bb;color:#cec1bb}
+</style>
+<style type="text/css">
+::-webkit-scrollbar {
+width: 4px;
+height: 4px;
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background-color: #f9f0ed;
+-webkit-border-radius: 0ex;
+border: 1px dotted #e2d5d0;
+}
+#linkbjinho { color: #bca7a7; padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinho { padding-bottom: 2px; border-bottom:1px dotted #c6a799; }
+#linkzinhoo { padding-bottom: 2px; border-bottom:1px dotted #e8c1c5; }</style>
+
+<!--
+tooooooooltip
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="./js/cookies.js"></script>
+<script src="./js/util.js"></script>
+
+<script>
+(function($){
+	var methods={
+		init:function(options){
+			var defaults={ 
+				tip_follows_cursor:false, //tooltip follows cursor: boolean
+				tip_delay_time:700, //tooltip delay before displaying: milliseconds
+				tip_fade_speed:300, //tooltip fade in/out speed: milliseconds
+				attribute:"title" //tooltip text come from this attribute
+			},
+			options=$.extend(defaults,options);
+			if($("#s-m-t-tooltip").length===0){
+				$("body").append("<div id='s-m-t-tooltip'><div></div></div>");
+			}
+			var smtTooltip=$("#s-m-t-tooltip"); 
+			smtTooltip.css({"position":"absolute","display":"none"}).data("smt-z-index",smtTooltip.css("z-index")).children("div").css({"width":"100%","height":"100%"});
+			function smtGetCursorCoords(event){
+				var smtCursorCoordsX=event.pageX,
+					smtCursorCoordsY=event.pageY;
+				smtTooltip.style_my_tooltips("position",{
+					smtCursorCoordsX:smtCursorCoordsX,
+					smtCursorCoordsY:smtCursorCoordsY
+				});
+			}
+			$(".smt-current-element").live("mouseout mousedown click",function(){
+				var $this=$(this);
+				clearTimeout(smtTooltip_delay);
+				smtTooltip.style_my_tooltips("hide",{
+					speed:$this.data("smt-fade-speed")
+				});
+				$(document).unbind("mousemove");
+				$this.removeClass("smt-current-element");
+				if($this.attr(options.attribute)===""){
+					$this.attr(options.attribute,$this.data("smt-title"));
+				}
+			});
+			return this["live"]("mouseover",function(event){
+				var $this=$(this),
+					title=$this.attr(options.attribute);
+				$this.addClass("smt-current-element").data({"smt-title":title,"smt-fade-speed":options.tip_fade_speed}).attr(options.attribute,"");
+				smtTooltip.style_my_tooltips("update",{
+					title:title,
+					speed:options.tip_fade_speed,
+					delay:options.tip_delay_time,
+					tip_follows_cursor:options.tip_follows_cursor
+				});
+				$(document).bind("mousemove", function(event){
+					smtGetCursorCoords(event); 
+				});
+			});
+		},
+		update:function(options){
+			var $this=$(this);
+			$this.stop().css({"display":"none","z-index":$this.data("smt-z-index")}).children("div").text(options.title);
+			smtTooltip_delay=setTimeout(function(){
+				$this.style_my_tooltips("show",{
+					speed:options.speed,
+					tip_follows_cursor:options.tip_follows_cursor
+				})
+			}, options.delay);
+		},
+		show:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,1);
+			if(!options.tip_follows_cursor){
+				$(document).unbind("mousemove");
+			}
+		},
+		hide:function(options){
+			var $this=$(this);
+			$this.stop().fadeTo(options.speed,0,function(){
+				$this.css({"z-index":"-1"});
+			});
+		},
+		position:function(options){
+			var $this=$(this),
+				winScrollX=$(window).scrollLeft(),
+				winScrollY=$(window).scrollTop(),
+				tipWidth=$this.outerWidth(true),
+				tipHeight=$this.outerHeight(true),
+				leftOffset=(options.smtCursorCoordsX+tipWidth)-winScrollX,
+				topOffset=(options.smtCursorCoordsY+tipHeight)-winScrollY;
+			if(leftOffset<=$(window).width() && leftOffset<=$(document).width()){
+				$this.css("left",options.smtCursorCoordsX);
+			}else{
+				var thePosX=options.smtCursorCoordsX-tipWidth;
+				if(thePosX>=winScrollX){
+					$this.css("left",thePosX);
+				}else{
+					$this.css("left",winScrollX);
+				}
+			}
+			if(topOffset<=$(window).height() && topOffset<=$(document).height()){
+				$this.css("top",options.smtCursorCoordsY);
+			}else{
+				var thePosY=options.smtCursorCoordsY-tipHeight;
+				if(thePosY>=winScrollY){
+					$this.css("top",thePosY);
+				}else{
+					$this.css("top",winScrollY);
+				}
+			}
+		}
+	}
+	$.fn.style_my_tooltips=function(method){
+		if(methods[method]){
+			return methods[method].apply(this,Array.prototype.slice.call(arguments,1));
+		}else if(typeof method==="object" || !method){
+			return methods.init.apply(this,arguments);
+		}else{
+			$.error("Method "+method+" does not exist");
+		}
+	};
+})(jQuery);  
+</script>
+<script>
+
+(function($){
+
+$(document).ready(function(){
+
+$("a[title]").style_my_tooltips({
+
+tip_follows_cursor:true,
+
+tip_delay_time:90,
+
+tip_fade_speed:600,
+
+attribute:"title"
+
+});
+
+});
+
+})(jQuery);
+
+</script>
+<!--tooltip!-->
+<style>
+.tooltip{
+    display: inline;
+    position: relative;
+}
+#s-m-t-tooltip {
+max-width:300px; /*how big the tooltip can be at most*/
+border-radius: 0px; /*change your border radius*/
+padding:3px 4px 5px 4px; /*padding inside tooltip*/
+margin:10px 7px -2px 10px; /*distance from word*/
+background-color:#fcf6f2; /*background color*/ 
+  border:1px dotted #CEB6B6; /*border info*/
+  font-family:tahoma; /*tooltip font*/
+font-size:7px; /*tooltip font size*/
+letter-spacing:2px; /*tooltip letter spacing*/
+color:#CEB6B6; /*tooltip font color*/
+z-index:9999;
+}
+</style>
+
+<!--
+menuuuuuuuuuuuuuuu
+-->
+<html xmlns="https://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: Verdana;
+			}
+			
+			ul {
+				list-style: none
+			}
+			
+			#context_menu {
+				background: #fcf6f2;
+				-moz-border-radius: 1px 1px;
+				border: 1px dotted #baada3;
+				letter-spacing:1px; 
+				width: 72px;
+				font-size: 8px;
+				position: absolute;
+				display: none;
+				z-index:999;
+			}
+			
+			#context_menu ul li {
+				padding: 4px 4px;
+				-moz-border-radius: 10px 10px;
+				cursor: url(https://i.imgur.com/IJhQJq5.png), progress;
+			}
+			
+			#context_menu ul li:hover {
+				background: #fcf6f2;
+				color: #baada3;
+			}
+		</style>
+		<script type="text/javascript" language="JavaScript">
+			function click(e){
+				document.getElementById("teste").innerHTML = "";
+				var menu = document.getElementById("context_menu");
+				var mouseEvent = e || event;
+				if (mouseEvent.button == 2 || mouseEvent.button == 3) {
+					mostrar(mouseEvent);
+					menu.onmouseout = function(e){
+						var mouseEvent = e || event;
+						var element = mouseEvent.relatedTarget || mouseEvent.toElement; 
+						if (element.nodeName != "LI") {
+							mouseEvent.toElement;
+						}
+					};
+				}
+				if (mouseEvent.button == 0 || mouseEvent.button == 1) {
+					esconder();
+				}
+			}
+			
+			document.onmousedown = click;
+			document.oncontextmenu = function(){
+				return false
+			};
+			function mostrar(e){
+				var menu = document.getElementById("context_menu");
+				menu.style.display = "block";
+				menu.style.top = e.pageY + 5 + "px";
+				menu.style.left = e.pageX + 5 + "px";
+			}
+			
+			function esconder(){
+				setTimeout(function(){
+					var menu = document.getElementById("context_menu");
+					menu.style.display = "none"
+				}, 100);
+			}
+			
+		</script>
+	</head>
+		<div id="teste"></div>
+		<div id="context_menu">
+			<ul>
+				<li><font color="#baada3"> ‌ take care ♡</font></li>
+			</ul>
+		</div>
+<!--
+menuuuuuuuuuuuuuuu
+-->
+
+</head>
+
+<body ondragstart="return false" style="background-image:url(./img/bg.jpg); background-repeat: no-repeat; background-size: cover; background-color:#fefbfb; font-family: Verdana; font-size: 10px;">
+<style>
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+#base {
+position: absolute;
+	left: 350px;
+	top: 90px;
+overflow-y:hidden;
+overflow-x:hidden;
+ }
+#stuff {
+position: absolute;
+	left: 15px;
+	top: 54px;
+width: 594px;
+height: 415px;
+overflow-x:hidden;
+z-index: 6;
+ }
+#aaa {
+position: absolute;
+	left: 273px;
+	top: 522px;
+width: 100px;
+height: 100px;
+overflow-x:hidden;
+z-index: 3;
+ }
+@media screen and (max-width: 1000px) and (orientation: portrait){
+#everything { position: absolute; zoom: 145%;
+	left:590px;
+	top:-150px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg); }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 1700px) and (orientation: landscape){
+#everything { position: absolute; zoom: 120%;
+	left:90px;
+	top:35px; }
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 2000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 100%; left:-80px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+@media screen and (min-width: 3000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 240%;
+	left:90px;
+	top:35px; }
+}
+@media screen and (max-width: 1000px) and (orientation: landscape){
+#everything { position: absolute; zoom: 80%; left:-50px; top:0px;}
+#stuff { overflow: auto; overflow: scroll; }
+}
+.error-message {
+	color: #aa9194;
+	font-size: 9px;
+	padding-top:8px;
+	letter-spacing: 1px;
+	display: none;
+}
+</style>
+
+<div id="everything">
+
+<a href="/"><img style="position: absolute; left: 515px; top: 5px; z-index: 2;"
+src="./img/logo.png"></a><br><br>
+
+<a href="/account"><img style="position: absolute; left: 225px; top: 105px; z-index: 2;"
+src="./img/account.png" onMouseOver="this.src='./img/accounthover.png'"
+onMouseOut="this.src='./img/account.png'"></a><br><br>
+
+<a href="https://shybunny.store" target="_blank">
+<img style="position: absolute; left: 225px; top: 220px; z-index: 2;"
+src="./img/store.png" onMouseOver="this.src='./img/storehover.png'"
+onMouseOut="this.src='./img/store.png'"></a><br><br>
+
+<a href="/notes"><img style="position: absolute; left: 222px; top: 375px; z-index: 2;"
+src="./img/notes.png" onMouseOver="this.src='./img/noteshover.png'"
+onMouseOut="this.src='./img/notes.png'"></a><br><br>
+
+<a href="/thoughts"><img style="position: absolute; left: 220px; top: 505px; z-index: 2;"
+src="./img/thoughts.png" onMouseOver="this.src='./img/thoughtshover.png'"
+onMouseOut="this.src='./img/thoughts.png'"></a><br><br>
+
+
+<a href="/games"><img style="position: absolute; left: 995px; top: 90px; z-index: 2;"
+src="./img/games.png" onMouseOver="this.src='./img/gameshover.png'"
+onMouseOut="this.src='./img/games.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1010px; top: 248px; z-index: 2;"
+src="./img/cafe.png" onMouseOver="this.src='./img/cafehover.png'"
+onMouseOut="this.src='./img/cafe.png'"></a><br><br>
+
+<a href="/"><img style="position: absolute; left: 1020px; top: 375px; z-index: 2;"
+src="./img/bot.png" onMouseOver="this.src='./img/bothover.png'"
+onMouseOut="this.src='./img/bot.png'"></a><br><br>
+
+<a href="/series">
+<img style="position: absolute; left: 1010px; top: 490px; z-index: 2;"
+src="./img/series.png" onMouseOver="this.src='./img/serieshover.png'"
+onMouseOut="this.src='./img/series.png'"></a><br><br>
+
+
+
+<div id="base">
+
+<div id="aaa">
+<a id="linkzinho" href="https://middlepot.com" target="_blank" style="text-decoration: none;"><font color="#b09097">middlepot.com</font></a>
+</div>
+
+<img src="./img/base.png"/>
+
+<div id="stuff">
+<br>
+　　<a href="./home" id="linkbjinho" style="text-decoration: none;"><font color="#cfb4b8">home</a></font>
+
+<div style="position:absolute; left:5%; right:5%; line-height: 10px;">
+<center>
+<img id="img_my_profile_en" src="./img/myfluffylifeprofile_en.png"/>
+<img id="img_my_profile_pt" style="display: none;" src="./img/myfluffylifeprofile_pt.png"/>
+<img id="img_my_profile_jp" style="display: none;" src="./img/myfluffylifeprofile_jp.png"/>
+
+<br><br><br>
+<div style="line-height: 15px;">
+<font color="#b8a2a3" style="font-size:10px;">
+<span id="text_current_profile_en">this is your current my fluffy life profile :</span>
+<span id="text_current_profile_pt" style="display: none;">este é o seu perfil my fluffy life no momento :</span>
+<span id="text_current_profile_jp" style="display: none;">これはあなたの現在のmy fluffy lifeプロフィールです : </span>
+</div>
+<br><br>
+
+<img id="img_current_profile" style="display: none; width: 400px;">
+
+<span id="text_no_profile_en" style="display: none;">profile not found !</span>
+<span id="text_no_profile_pt" style="display: none;">perfil não encontrado !</span>
+<span id="text_no_profile_jp" style="display: none;">プロファイルが見つかりません !</span>
+
+<br><br><br>
+
+<div style="line-height: 10px;">
+<font color="#a89495" style="font-size:10px;">
+<span id="text_inventory_en">my fluffy life profile is integrated with :</span>
+<span id="text_inventory_pt" style="display: none;">perfil my fluffy life é integrados com :</span>
+<span id="text_inventory_jp" style="display: none;">my fluffy lifeプロファイルは以下と統合されています :</span>
+<br><br><br>
+<sub><sub><sub><img src="./img/games+.png"/></sub></sub></sub>
+<a href="https://myfluffy.life" target="_blank" id="linkbjinho" style="text-decoration: none;">
+	<font id="link_myfluffylife_inventory_en" color="#c9abb0">my fluffy life game & inventory</font>
+	<font id="link_myfluffylife_inventory_pt" style="display: none;" color="#c9abb0">my fluffy life jogo & inventário</font>
+	<font id="link_myfluffylife_inventory_jp" style="display: none;" color="#c9abb0">my fluffy life ゲームと在庫</font>
+</a><br><br>
+<sub><sub><sub><img src="./img/store+.png"/></sub></sub></sub>
+<a href="https://shybunny.store" target="_blank" id="linkbjinho" style="text-decoration: none;">
+	<font id="link_shybunny_stationery_en" color="#c9abb0">shy bunny store stationery ꒰ soon ꒱</font>
+	<font id="link_shybunny_stationery_pt" style="display: none;" color="#c9abb0">papelaria shy bunny store ꒰ em breve ꒱</font>
+	<font id="link_shybunny_stationery_jp" style="display: none;" color="#c9abb0">shy bunny store 文房具 ꒰ 近日 ꒱</font>
+</a><br><br>
+　<sub><sub><sub><img src="./img/cafe+.png"/></sub></sub></sub>
+<a href="" id="linkbjinho" style="text-decoration: none;">
+	<font id="link_pufcafe_inventory_en" color="#c9abb0">puf cafe game & inventory ꒰ soon ꒱</font>
+	<font id="link_pufcafe_inventory_pt" style="display: none;" color="#c9abb0">puf cafe jogo & inventário ꒰ em breve ꒱</font>
+	<font id="link_pufcafe_inventory_jp" style="display: none;" color="#c9abb0">puf cafe ゲームと在庫 ꒰ 近日 ꒱</font>
+</a><br><br>
+　　<sub><sub><sub><img src="./img/bot+.png"/></sub></sub></sub>
+<a href="" id="linkbjinho" style="text-decoration: none;">
+	<font id="link_pufbot_inventory_en" color="#c9abb0">puf bot game & inventory ꒰ soon ꒱</font>
+	<font id="link_pufbot_inventory_pt" style="display: none;" color="#c9abb0">puf bot jogo & inventário ꒰ em breve ꒱</font>
+	<font id="link_pufbot_inventory_jp" style="display: none;" color="#c9abb0">puf bot ゲームと在庫 ꒰ 近日 ꒱</font>
+</a>　　　　
+<br><br><br><br>
+</div>
+</font>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div style="display: none; position:relative; float:right; right:20px; top:-5px;">
+<a><img src="./img/langbutton1.png" id="en" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton2.png" id="pt" onclick="changeTranslation(this);"/></a>
+<a><img src="./img/langbutton3.png" id="jp" onclick="changeTranslation(this);"/></a>
+</div>
+
+<script>
+	registerTranslatable('img_my_profile');
+	registerTranslatable('text_current_profile');
+	registerTranslatable('text_inventory');
+	registerTranslatable('link_myfluffylife_inventory');
+	registerTranslatable('link_shybunny_stationery');
+	registerTranslatable('link_pufcafe_inventory');
+	registerTranslatable('link_pufbot_inventory');
+	autoTranslate();
+</script>
+
+<script>
+	//check authentication
+	pooftiesPageRequiresAuthentication = true;
+	//get profile
+	async function getProfile(){
+		var lang = getCurrentLanguage();
+		var res = await fetch(api_path+'/myfluffylife/profile?lang='+lang, {credentials: 'include'});
+		if(res.status === 200){
+			var body = await res.json();
+			if(body.profile){
+				var ime = document.getElementById('img_current_profile');
+				ime.src = body.profile;
+				ime.style.display = 'block';
+			}
+		}
+		//if user don't has a my fluffy life account
+		else if(res.status < 200 || res.status >= 300){
+			document.getElementById('text_no_profile_'+lang).style.display = 'block';
+			return;
+		}
+	}
+	getProfile();
+</script>
+
+</body>
+
+<!--
+
+　　　          ___   .--.
+　　　    .--.-"   "-' .- |
+　　　   / .-,`          .'   
+　　　   \   `           \ 　　　　　　。・゜ 　♡   。　　・　゜ 　　　♡  
+　　　    '.            ・ \　　　　　　　　　　　　　　　　　　　　　　　　♡　　　　♡ ゜・。。♡  
+　　　      |  ・     ᴥ    。|　　　　・゜♡ ゜・。　　. * ・ ♡ °  . 。
+　　　      \ 。            /.____　　　　　　　　　　　　　　　　　　♡.  
+　　　     /`-.          ,'.'    `\　　　　　　　　　　　　　　　　　　。・゜　　　 ♡ ・ 。　　。・゜ ♡  
+　　　  __/   \`-.____.-' `\      /　　　　　♡　。・゜      
+　　　  | `---`'-'._/-`     \----'    _ 　　　　　　　　　　　♡　　　.　　　.♡ 
+　　　  |,-'`  /             |    _.-' `\　　　　. * ・        
+　　　 .'     /              |--'`     / |　　　　　　　　　　 ♡
+　　　/      /\              `         | |
+　　　|   .\/  \      .--. __          \ |　　　　　　　　　　　*.。middlepot.com 
+　　　 '-'      '._       /  `\         /　　　　　　　　　　　　　　　　　　　　　　　ଘ(*´ ˘ `*)ഒ 。.*
+　　　             `\    '     |------'`
+　　　               \  |      |
+　　　                \        /
+ 　　　                '._  _.'
+
+-->
+
+</html>
